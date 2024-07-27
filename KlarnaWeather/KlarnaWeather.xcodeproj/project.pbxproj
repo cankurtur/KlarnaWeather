@@ -11,6 +11,18 @@
 		259B9D802C555624003A716D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 259B9D7F2C555624003A716D /* ContentView.swift */; };
 		259B9D822C555625003A716D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 259B9D812C555625003A716D /* Assets.xcassets */; };
 		259B9D852C555625003A716D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 259B9D842C555625003A716D /* Preview Assets.xcassets */; };
+		259B9D8F2C555A91003A716D /* HTTPHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 259B9D8E2C555A91003A716D /* HTTPHeader.swift */; };
+		259B9D922C555BE7003A716D /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 259B9D912C555BE7003A716D /* HTTPMethod.swift */; };
+		259B9D942C555D96003A716D /* HTTPHeaders.swift in Sources */ = {isa = PBXBuildFile; fileRef = 259B9D932C555D96003A716D /* HTTPHeaders.swift */; };
+		259B9D962C555ED3003A716D /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 259B9D952C555ED3003A716D /* Endpoint.swift */; };
+		259B9D982C555FE0003A716D /* ParameterEncoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 259B9D972C555FE0003A716D /* ParameterEncoding.swift */; };
+		259B9D9A2C556183003A716D /* Responses.swift in Sources */ = {isa = PBXBuildFile; fileRef = 259B9D992C556183003A716D /* Responses.swift */; };
+		259B9D9C2C5561A1003A716D /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 259B9D9B2C5561A1003A716D /* Errors.swift */; };
+		259B9D9E2C5563A3003A716D /* RequestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 259B9D9D2C5563A3003A716D /* RequestBuilder.swift */; };
+		259B9DA12C55647C003A716D /* URLQueryItemExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 259B9DA02C55647C003A716D /* URLQueryItemExtension.swift */; };
+		259B9DA52C5566F5003A716D /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 259B9DA42C5566F5003A716D /* NetworkManager.swift */; };
+		259B9DA72C556914003A716D /* URLResponseExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 259B9DA62C556914003A716D /* URLResponseExtension.swift */; };
+		259B9DA92C556D66003A716D /* BaseURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 259B9DA82C556D66003A716D /* BaseURL.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +31,18 @@
 		259B9D7F2C555624003A716D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		259B9D812C555625003A716D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		259B9D842C555625003A716D /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		259B9D8E2C555A91003A716D /* HTTPHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPHeader.swift; sourceTree = "<group>"; };
+		259B9D912C555BE7003A716D /* HTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
+		259B9D932C555D96003A716D /* HTTPHeaders.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPHeaders.swift; sourceTree = "<group>"; };
+		259B9D952C555ED3003A716D /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
+		259B9D972C555FE0003A716D /* ParameterEncoding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParameterEncoding.swift; sourceTree = "<group>"; };
+		259B9D992C556183003A716D /* Responses.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Responses.swift; sourceTree = "<group>"; };
+		259B9D9B2C5561A1003A716D /* Errors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
+		259B9D9D2C5563A3003A716D /* RequestBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestBuilder.swift; sourceTree = "<group>"; };
+		259B9DA02C55647C003A716D /* URLQueryItemExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLQueryItemExtension.swift; sourceTree = "<group>"; };
+		259B9DA42C5566F5003A716D /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		259B9DA62C556914003A716D /* URLResponseExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLResponseExtension.swift; sourceTree = "<group>"; };
+		259B9DA82C556D66003A716D /* BaseURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseURL.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +75,7 @@
 		259B9D7C2C555624003A716D /* KlarnaWeather */ = {
 			isa = PBXGroup;
 			children = (
+				259B9D8B2C5559AA003A716D /* Networking */,
 				259B9D7D2C555624003A716D /* KlarnaWeatherApp.swift */,
 				259B9D7F2C555624003A716D /* ContentView.swift */,
 				259B9D812C555625003A716D /* Assets.xcassets */,
@@ -65,6 +90,49 @@
 				259B9D842C555625003A716D /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		259B9D8B2C5559AA003A716D /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				259B9D8C2C5559B4003A716D /* Base */,
+				259B9D8D2C555A7C003A716D /* HTTP */,
+				259B9D9F2C55646D003A716D /* Extension */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		259B9D8C2C5559B4003A716D /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				259B9D952C555ED3003A716D /* Endpoint.swift */,
+				259B9D992C556183003A716D /* Responses.swift */,
+				259B9D9B2C5561A1003A716D /* Errors.swift */,
+				259B9D9D2C5563A3003A716D /* RequestBuilder.swift */,
+				259B9DA42C5566F5003A716D /* NetworkManager.swift */,
+				259B9DA82C556D66003A716D /* BaseURL.swift */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		259B9D8D2C555A7C003A716D /* HTTP */ = {
+			isa = PBXGroup;
+			children = (
+				259B9D8E2C555A91003A716D /* HTTPHeader.swift */,
+				259B9D912C555BE7003A716D /* HTTPMethod.swift */,
+				259B9D932C555D96003A716D /* HTTPHeaders.swift */,
+				259B9D972C555FE0003A716D /* ParameterEncoding.swift */,
+			);
+			path = HTTP;
+			sourceTree = "<group>";
+		};
+		259B9D9F2C55646D003A716D /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				259B9DA02C55647C003A716D /* URLQueryItemExtension.swift */,
+				259B9DA62C556914003A716D /* URLResponseExtension.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,8 +205,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				259B9D982C555FE0003A716D /* ParameterEncoding.swift in Sources */,
+				259B9D922C555BE7003A716D /* HTTPMethod.swift in Sources */,
+				259B9DA92C556D66003A716D /* BaseURL.swift in Sources */,
+				259B9D8F2C555A91003A716D /* HTTPHeader.swift in Sources */,
+				259B9D942C555D96003A716D /* HTTPHeaders.swift in Sources */,
+				259B9D9A2C556183003A716D /* Responses.swift in Sources */,
+				259B9D9E2C5563A3003A716D /* RequestBuilder.swift in Sources */,
 				259B9D802C555624003A716D /* ContentView.swift in Sources */,
+				259B9DA72C556914003A716D /* URLResponseExtension.swift in Sources */,
+				259B9D962C555ED3003A716D /* Endpoint.swift in Sources */,
+				259B9DA52C5566F5003A716D /* NetworkManager.swift in Sources */,
+				259B9D9C2C5561A1003A716D /* Errors.swift in Sources */,
 				259B9D7E2C555624003A716D /* KlarnaWeatherApp.swift in Sources */,
+				259B9DA12C55647C003A716D /* URLQueryItemExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -272,6 +352,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"KlarnaWeather/Preview Content\"";
+				DEVELOPMENT_TEAM = WZ2D3R22K6;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -300,6 +381,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"KlarnaWeather/Preview Content\"";
+				DEVELOPMENT_TEAM = WZ2D3R22K6;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
