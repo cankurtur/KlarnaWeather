@@ -13,7 +13,7 @@ enum BaseURL: String {
     var url: String {
         switch self {
         case.openWeatherMapBaseUrl:
-            return "https://api.openweathermap.org"
+            return Config.shared.openWeatherMapBaseUrl
         }
     }
         
