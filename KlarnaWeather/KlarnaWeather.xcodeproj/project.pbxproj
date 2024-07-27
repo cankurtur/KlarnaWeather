@@ -23,6 +23,8 @@
 		259B9DA52C5566F5003A716D /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 259B9DA42C5566F5003A716D /* NetworkManager.swift */; };
 		259B9DA72C556914003A716D /* URLResponseExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 259B9DA62C556914003A716D /* URLResponseExtension.swift */; };
 		259B9DA92C556D66003A716D /* BaseURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 259B9DA82C556D66003A716D /* BaseURL.swift */; };
+		259B9DAD2C557D18003A716D /* Config.plist in Resources */ = {isa = PBXBuildFile; fileRef = 259B9DAC2C557D18003A716D /* Config.plist */; };
+		259B9DB02C557E23003A716D /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 259B9DAF2C557E23003A716D /* Config.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,6 +45,9 @@
 		259B9DA42C5566F5003A716D /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		259B9DA62C556914003A716D /* URLResponseExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLResponseExtension.swift; sourceTree = "<group>"; };
 		259B9DA82C556D66003A716D /* BaseURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseURL.swift; sourceTree = "<group>"; };
+		259B9DAC2C557D18003A716D /* Config.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Config.plist; sourceTree = "<group>"; };
+		259B9DAF2C557E23003A716D /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
+		259B9DB12C55811E003A716D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,10 +80,11 @@
 		259B9D7C2C555624003A716D /* KlarnaWeather */ = {
 			isa = PBXGroup;
 			children = (
+				259B9DB12C55811E003A716D /* Info.plist */,
+				259B9DAA2C557C74003A716D /* App */,
 				259B9D8B2C5559AA003A716D /* Networking */,
-				259B9D7D2C555624003A716D /* KlarnaWeatherApp.swift */,
-				259B9D7F2C555624003A716D /* ContentView.swift */,
-				259B9D812C555625003A716D /* Assets.xcassets */,
+				259B9DAE2C557E05003A716D /* Utils */,
+				259B9DAB2C557C81003A716D /* Resources */,
 				259B9D832C555625003A716D /* Preview Content */,
 			);
 			path = KlarnaWeather;
@@ -133,6 +139,32 @@
 				259B9DA62C556914003A716D /* URLResponseExtension.swift */,
 			);
 			path = Extension;
+			sourceTree = "<group>";
+		};
+		259B9DAA2C557C74003A716D /* App */ = {
+			isa = PBXGroup;
+			children = (
+				259B9D7D2C555624003A716D /* KlarnaWeatherApp.swift */,
+				259B9D7F2C555624003A716D /* ContentView.swift */,
+				259B9DAC2C557D18003A716D /* Config.plist */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		259B9DAB2C557C81003A716D /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				259B9D812C555625003A716D /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		259B9DAE2C557E05003A716D /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				259B9DAF2C557E23003A716D /* Config.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -194,6 +226,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				259B9D852C555625003A716D /* Preview Assets.xcassets in Resources */,
+				259B9DAD2C557D18003A716D /* Config.plist in Resources */,
 				259B9D822C555625003A716D /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -207,6 +240,7 @@
 			files = (
 				259B9D982C555FE0003A716D /* ParameterEncoding.swift in Sources */,
 				259B9D922C555BE7003A716D /* HTTPMethod.swift in Sources */,
+				259B9DB02C557E23003A716D /* Config.swift in Sources */,
 				259B9DA92C556D66003A716D /* BaseURL.swift in Sources */,
 				259B9D8F2C555A91003A716D /* HTTPHeader.swift in Sources */,
 				259B9D942C555D96003A716D /* HTTPHeaders.swift in Sources */,
@@ -355,6 +389,7 @@
 				DEVELOPMENT_TEAM = WZ2D3R22K6;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = KlarnaWeather/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -384,6 +419,7 @@
 				DEVELOPMENT_TEAM = WZ2D3R22K6;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = KlarnaWeather/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
