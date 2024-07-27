@@ -11,7 +11,7 @@ import SwiftUI
 struct KlarnaWeatherApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            HomeView()
         }
     }
 }
