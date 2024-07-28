@@ -17,7 +17,9 @@ final class WeatherManager: ObservableObject {
         self.currentWeatherInfo = WeatherInfoModel.defaultValue
     }
 
-    func fetchWeatherInformation(latitude: Double, longitude: Double) async {
+    func fetchWeatherInformation(latitude: Double?, longitude: Double?) async {
+        guard let latitude, let longitude else { return }
+        
         do {
             let response = try await networkManager.request(
                 endpoint: WeatherEndpointItem.fetchWeatherInfo(

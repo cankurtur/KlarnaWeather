@@ -36,6 +36,9 @@
 		259B9DCC2C55BDE3003A716D /* GeographicalInfoResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 259B9DCB2C55BDE3003A716D /* GeographicalInfoResponseModel.swift */; };
 		259B9DD02C568159003A716D /* WeatherInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 259B9DCF2C568159003A716D /* WeatherInfoModel.swift */; };
 		259B9DD22C568167003A716D /* GeographicalInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 259B9DD12C568167003A716D /* GeographicalInfoModel.swift */; };
+		259B9DD52C568220003A716D /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 259B9DD42C568220003A716D /* LocationManager.swift */; };
+		259B9DD82C569D93003A716D /* HapticButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 259B9DD72C569D93003A716D /* HapticButton.swift */; };
+		259B9DDA2C569EC7003A716D /* AppImageButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 259B9DD92C569EC7003A716D /* AppImageButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -70,6 +73,9 @@
 		259B9DCB2C55BDE3003A716D /* GeographicalInfoResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeographicalInfoResponseModel.swift; sourceTree = "<group>"; };
 		259B9DCF2C568159003A716D /* WeatherInfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherInfoModel.swift; sourceTree = "<group>"; };
 		259B9DD12C568167003A716D /* GeographicalInfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeographicalInfoModel.swift; sourceTree = "<group>"; };
+		259B9DD42C568220003A716D /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		259B9DD72C569D93003A716D /* HapticButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticButton.swift; sourceTree = "<group>"; };
+		259B9DD92C569EC7003A716D /* AppImageButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppImageButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -191,6 +197,7 @@
 			children = (
 				259B9DCD2C568142003A716D /* WeatherManager */,
 				259B9DAF2C557E23003A716D /* Config.swift */,
+				259B9DD42C568220003A716D /* LocationManager.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -208,6 +215,8 @@
 			isa = PBXGroup;
 			children = (
 				259B9DBC2C558E44003A716D /* AppLinearGradient.swift */,
+				259B9DD72C569D93003A716D /* HapticButton.swift */,
+				259B9DD92C569EC7003A716D /* AppImageButton.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -324,6 +333,8 @@
 				259B9D942C555D96003A716D /* HTTPHeaders.swift in Sources */,
 				259B9DCA2C55BDD0003A716D /* WeatherInfoResponseModel.swift in Sources */,
 				259B9D9A2C556183003A716D /* Responses.swift in Sources */,
+				259B9DD52C568220003A716D /* LocationManager.swift in Sources */,
+				259B9DD82C569D93003A716D /* HapticButton.swift in Sources */,
 				259B9DC32C55B7FC003A716D /* WeatherView.swift in Sources */,
 				259B9DB82C558AF1003A716D /* Fonts.swift in Sources */,
 				259B9D9E2C5563A3003A716D /* RequestBuilder.swift in Sources */,
@@ -337,6 +348,7 @@
 				259B9D7E2C555624003A716D /* KlarnaWeatherApp.swift in Sources */,
 				259B9DBD2C558E44003A716D /* AppLinearGradient.swift in Sources */,
 				259B9DA12C55647C003A716D /* URLQueryItemExtension.swift in Sources */,
+				259B9DDA2C569EC7003A716D /* AppImageButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
