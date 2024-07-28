@@ -61,8 +61,8 @@ final class WeatherManager: ObservableObject {
                 )
             }
             return model
-        } catch {
-            print("error")
+        } catch let error {
+            print(error)
             return []
         }
     }
