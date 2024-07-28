@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct WeatherView: View {
+    @StateObject var viewModel = WeatherViewModel()
+    @State var showSearch: Bool = false
+    
     var body: some View {
         ZStack {
             AppLinearGradient()
@@ -17,11 +20,13 @@ struct WeatherView: View {
                 statusView
             }
             buttonsView
-        }
+        }.onAppear(perform: {
+            viewModel.fetchCurrentLocationWeatherInfo()
+        })
     }
     
     private var cityTextView: some View {
-        Text("Cupertino, CA")
+        Text(viewModel.weatherInfoModel.cityWithCountry)
             .font(.primaryHeadline)
             .foregroundStyle(Color.primaryText)
     }
@@ -33,7 +38,7 @@ struct WeatherView: View {
                 .resizable()
                 .aspectRatio(contentMode: .fit)
                 .frame(width: 200, height: 200)
-            Text("76")
+            Text(viewModel.weatherInfoModel.temp)
                 .font(.extraLarge)
                 .foregroundStyle(Color.primary)
         }
@@ -44,14 +49,17 @@ struct WeatherView: View {
             HStack {
                 Spacer()
                 AppImageButton(imageName: "magnifyingglass.circle.fill") {
-                    print("search")
+                    showSearch.toggle()
                 }
+                .sheet(isPresented: $showSearch, content: {
+                    SearchView(selectedLocationCoordinates: $viewModel.selectedLocationCoordinates)
+                })
             }
             Spacer()
             HStack {
                 Spacer()
                 AppImageButton(imageName: "location.circle.fill") {
-                    print("location")
+                    viewModel.fetchCurrentLocationWeatherInfo()
                 }
                 Spacer()
             }

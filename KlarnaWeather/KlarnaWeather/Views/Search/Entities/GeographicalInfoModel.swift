@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct GeographicalInfoModel: Identifiable {
+struct GeographicalInfoModel: Identifiable, Hashable {
     var id = UUID()
     
     let cityWithCountry: String
