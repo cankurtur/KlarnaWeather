@@ -39,6 +39,8 @@
 		259B9DD52C568220003A716D /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 259B9DD42C568220003A716D /* LocationManager.swift */; };
 		259B9DD82C569D93003A716D /* HapticButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 259B9DD72C569D93003A716D /* HapticButton.swift */; };
 		259B9DDA2C569EC7003A716D /* AppImageButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 259B9DD92C569EC7003A716D /* AppImageButton.swift */; };
+		259B9DDE2C56AAE8003A716D /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 259B9DDD2C56AAE8003A716D /* SearchView.swift */; };
+		259B9DE02C56B686003A716D /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 259B9DDF2C56B686003A716D /* SearchViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -76,6 +78,8 @@
 		259B9DD42C568220003A716D /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		259B9DD72C569D93003A716D /* HapticButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticButton.swift; sourceTree = "<group>"; };
 		259B9DD92C569EC7003A716D /* AppImageButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppImageButton.swift; sourceTree = "<group>"; };
+		259B9DDD2C56AAE8003A716D /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
+		259B9DDF2C56B686003A716D /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -207,6 +211,8 @@
 			children = (
 				259B9DB32C5589BC003A716D /* MainView.swift */,
 				259B9DC22C55B7FC003A716D /* WeatherView.swift */,
+				259B9DDD2C56AAE8003A716D /* SearchView.swift */,
+				259B9DDF2C56B686003A716D /* SearchViewModel.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -324,8 +330,10 @@
 				259B9D982C555FE0003A716D /* ParameterEncoding.swift in Sources */,
 				259B9DCC2C55BDE3003A716D /* GeographicalInfoResponseModel.swift in Sources */,
 				259B9D922C555BE7003A716D /* HTTPMethod.swift in Sources */,
+				259B9DDE2C56AAE8003A716D /* SearchView.swift in Sources */,
 				259B9DD22C568167003A716D /* GeographicalInfoModel.swift in Sources */,
 				259B9DC52C55B8C6003A716D /* WeatherManager.swift in Sources */,
+				259B9DE02C56B686003A716D /* SearchViewModel.swift in Sources */,
 				259B9DB02C557E23003A716D /* Config.swift in Sources */,
 				259B9DA92C556D66003A716D /* BaseURL.swift in Sources */,
 				259B9DD02C568159003A716D /* WeatherInfoModel.swift in Sources */,
