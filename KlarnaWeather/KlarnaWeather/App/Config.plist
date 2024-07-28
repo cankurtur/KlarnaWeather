@@ -8,6 +8,8 @@
 		<string>6146820e654ad8ea89c40938cfc2100c</string>
 		<key>openWeatherMapBaseUrl</key>
 		<string>https://api.openweathermap.org</string>
+		<key>defaultSearchLimit</key>
+		<integer>10</integer>
 	</dict>
 	<key>Release</key>
 	<dict>
@@ -15,6 +17,8 @@
 		<string>6146820e654ad8ea89c40938cfc2100c</string>
 		<key>openWeatherMapBaseUrl</key>
 		<string>https://api.openweathermap.org</string>
+		<key>defaultSearchLimit</key>
+		<integer>10</integer>
 	</dict>
 </dict>
 </plist>

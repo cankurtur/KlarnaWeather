@@ -10,6 +10,7 @@ import Foundation
 private enum Keys: String {
     case openWeatherMapAPIKey
     case openWeatherMapBaseUrl
+    case defaultSearchLimit
 }
 
 final class Config: NSObject {
@@ -31,5 +32,9 @@ extension Config {
     
     var openWeatherMapBaseUrl: String {
         return configs.object(forKey: Keys.openWeatherMapBaseUrl.rawValue) as! String
+    }
+    
+    var defaultSearchLimit: Int {
+        return configs.object(forKey: Keys.defaultSearchLimit.rawValue) as! Int
     }
 }
