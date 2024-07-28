@@ -55,7 +55,7 @@ final class WeatherViewModel: ObservableObject {
     
     private func updateWeatherInfoModel(with response: WeatherInfoResponseModel) {
         weatherInfoModel = WeatherInfoModel(
-            iconName: "cloud.sun.fill",
+            iconName: WeatherInfoModel.IconName.ImageName(with: response.weather.first?.id ?? 0),
             temp: "\(response.main.temp)",
             feelsLike: "\(response.main.feelsLike)",
             tempMin: "\(response.main.tempMin)",
