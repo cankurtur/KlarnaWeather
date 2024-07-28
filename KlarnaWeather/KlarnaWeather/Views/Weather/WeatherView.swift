@@ -33,7 +33,7 @@ struct WeatherView: View {
     
     private var statusView: some View {
         VStack {
-            Image(systemName: "cloud.sun.fill")
+            Image(systemName: viewModel.weatherInfoModel.iconName.rawValue)
                 .renderingMode(.original)
                 .resizable()
                 .aspectRatio(contentMode: .fit)
@@ -83,9 +83,9 @@ struct WeatherView: View {
 //            }
 //            VStack(spacing: 5) {
 //                Text("Feels like")
-//                    .font(.primaryTitle)
+//                    .font(.primaryMidTitle)
 //                Text("76")
-//                    .font(.secondaryTitle)
+//                    .font(.secondaryMidTitle)
 //            }
 //        }
 //    }

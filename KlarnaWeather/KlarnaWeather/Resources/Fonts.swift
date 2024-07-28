@@ -24,11 +24,11 @@ extension Font {
         .system(size: 18, weight: .regular)
     }
 
-//    static var primaryMidTitle: Font {
-//        .system(size: 18, weight: .regular)
-//    }
-//    
-//    static var secondaryTitle: Font {
-//        .system(size: 18, weight: .bold)
-//    }
+    static var primaryMidTitle: Font {
+        .system(size: 18, weight: .regular)
+    }
+    
+    static var secondaryMidTitle: Font {
+        .system(size: 18, weight: .bold)
+    }
 }

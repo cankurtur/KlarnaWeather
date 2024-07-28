@@ -8,7 +8,7 @@
 import Foundation
 
 struct WeatherInfoModel {
-    let iconName: String
+    let iconName: IconName
     let temp: String
     let feelsLike: String
     let tempMin: String
@@ -17,7 +17,7 @@ struct WeatherInfoModel {
     let cityWithCountry: String
     
     static let defaultValue = WeatherInfoModel(
-        iconName: "icloud.slash.fill",
+        iconName: .thunderstorm,
         temp: "-",
         feelsLike: "-",
         tempMin: "-",
@@ -25,4 +25,36 @@ struct WeatherInfoModel {
         humidity: "-",
         cityWithCountry: "-"
     )
+    
+    enum IconName: String {
+        case thunderstorm = "cloud.bolt.fill"
+        case drizzle = "cloud.drizzle.fill"
+        case rain = "cloud.rain.fill"
+        case snow = "cloud.snow.fill"
+        case atmosphere = "cloud.fog.fill"
+        case sunMax = "sun.max.fill"
+        case clouds = "cloud.sun.fill"
+        case noInfo = "exclamationmark.icloud.fill"
+        
+        static func ImageName(with id: Int) -> IconName {
+            switch id {
+            case 200...232:
+                return .thunderstorm
+            case 300...321:
+                return .drizzle
+            case 500...531:
+                return .rain
+            case 600...622:
+                return .snow
+            case 701...781:
+                return .atmosphere
+            case 800:
+                return .sunMax
+            case 801...804:
+                return .clouds
+            default:
+                return .noInfo
+            }
+        }
+    }
 }
