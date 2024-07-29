@@ -11,6 +11,7 @@ import Combine
 class SearchViewModel: ObservableObject {
     @Published var searchText: String = ""
     @Published var searchResults: [GeographicalInfoModel] = []
+    @Published var hasConnection: Bool = false
     
     private let compositionRoot: CompositionRootInterface
     private var cancellables = Set<AnyCancellable>()
@@ -34,9 +35,22 @@ class SearchViewModel: ObservableObject {
                 fetchGeographicalInfo(wity: searchText)
             }
             .store(in: &cancellables)
+        
+        compositionRoot.networkMonitorManager.$isReachable
+            .sink { [weak self] isReachable in
+                guard let self else { return }
+                
+                Task {
+                    await MainActor.run {
+                        self.hasConnection = isReachable
+                    }
+                }
+            }
+            .store(in: &cancellables)
     }
     
     func fetchGeographicalInfo(wity cityName: String) {
+        guard compositionRoot.networkMonitorManager.isReachable else { return }
         Task {
             let response = try await compositionRoot.networkManager.request(
                 endpoint: WeatherEndpointItem.fetchGeographicalInfo(

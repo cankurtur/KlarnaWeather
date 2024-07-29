@@ -31,4 +31,12 @@ extension Font {
     static var secondaryMidTitle: Font {
         .system(size: 18, weight: .bold)
     }
+    
+    static var primarySmallTitle: Font {
+        .system(size: 14, weight: .semibold)
+    }
+    
+    static var secondarySmallTitle: Font {
+        .system(size: 12, weight: .regular)
+    }
 }

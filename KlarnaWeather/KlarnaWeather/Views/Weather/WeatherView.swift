@@ -20,6 +20,12 @@ struct WeatherView: View {
                 statusView
             }
             buttonsView
+            if !viewModel.hasConnection {
+                VStack {
+                    AlertView(warningTitle: "Internet connection is lost.", warningDescription: "Last updated value : 23:10")
+                    Spacer()
+                }.ignoresSafeArea()
+            }
         }.onAppear(perform: {
             viewModel.fetchCurrentLocationWeatherInfo()
         })
@@ -65,6 +71,7 @@ struct WeatherView: View {
             }
         }
         .padding(.all, 30)
+        .padding(.top, 30)
     }
     
 //    private var detailView: some View {

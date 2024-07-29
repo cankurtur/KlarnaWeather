@@ -11,6 +11,8 @@ import Combine
 final class WeatherViewModel: ObservableObject {
     @Published var weatherInfoModel: WeatherInfoModel
     @Published var selectedLocationCoordinates: LocationCoordinates?
+    @Published var hasConnection: Bool = false
+    
     private let compositionRoot: CompositionRootInterface
     private var cancellables = Set<AnyCancellable>()
     
@@ -28,15 +30,31 @@ final class WeatherViewModel: ObservableObject {
                 self.fetchWeatherInformation(latitude: location?.lat, longitude: location?.lon)
             }
             .store(in: &cancellables)
+        
+        compositionRoot.networkMonitorManager.$isReachable
+            .sink { [weak self] isReachable in
+                guard let self else { return }
+                
+                Task {
+                    await MainActor.run {
+                        self.hasConnection = isReachable
+                    }
+                }
+            }
+            .store(in: &cancellables)
     }
     
     func fetchCurrentLocationWeatherInfo() {
+        guard compositionRoot.networkMonitorManager.isReachable else { return }
+        
         let location = compositionRoot.locationManager.location
         fetchWeatherInformation(latitude: location?.latitude, longitude: location?.longitude)
     }
     
-    func fetchWeatherInformation(latitude: Double?, longitude: Double?) {
+    private func fetchWeatherInformation(latitude: Double?, longitude: Double?) {
         guard let latitude, let longitude else { return }
+        
+        guard compositionRoot.networkMonitorManager.isReachable else { return }
         
         Task {
             let response = try await compositionRoot.networkManager.request(
