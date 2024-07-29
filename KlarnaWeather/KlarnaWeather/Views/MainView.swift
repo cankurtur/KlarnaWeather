@@ -8,7 +8,10 @@
 import SwiftUI
 
 struct MainView: View {
+    @StateObject var networkMonitorManager = NetworkMonitorManager()
+
     var body: some View {
         WeatherView()
+            .environmentObject(networkMonitorManager)
     }
 }
