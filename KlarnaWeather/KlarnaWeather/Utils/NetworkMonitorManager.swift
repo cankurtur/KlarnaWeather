@@ -11,27 +11,23 @@ import Network
 
 final class NetworkMonitorManager: ObservableObject {
     private let monitor: NWPathMonitor = NWPathMonitor()
-    private var status: NWPath.Status = .satisfied
-    var isReachable: Bool { status == .satisfied }
-    
+    private let queue = DispatchQueue(label: "NetworkMonitor")
+    @Published var isReachable: Bool = true
+
     init() {
         startMonitoring()
     }
     
     func startMonitoring() {
-        monitor.pathUpdateHandler = {[weak self] monitorPath in
+        monitor.pathUpdateHandler = { [weak self] monitorPath in
             guard let self = self else { return }
-            
-            self.status = monitorPath.status
             
             Task {
                 await MainActor.run {
-                    self.objectWillChange.send()
+                    self.isReachable = true
                 }
             }
         }
-        
-        let queue = DispatchQueue(label: "NetworkMonitor")
         monitor.start(queue: queue)
     }
     

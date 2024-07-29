@@ -15,30 +15,52 @@ struct SearchView: View {
     
     var body: some View {
         NavigationView {
-            Group{
-                if !viewModel.searchResults.isEmpty {
-                    List(viewModel.searchResults, selection: $selection) { info in
-                        Text(info.cityWithCountry)
-                            .onTapGesture {
-                                selectedLocationCoordinates = LocationCoordinates(lat: info.latitude, lon: info.longitude)
-                                dismiss()
-                            }
-                    }.listStyle(.plain)
-                } else {
-                    VStack(spacing: 10) {
-                        Text("Find your city")
-                            .font(.primaryTitle)
-                        Text("Start searching to find weather information of your city.")
-                            .font(.secondaryTitle)
-                            .multilineTextAlignment(.center)
-                    }
-                    .foregroundStyle(Color.gray)
-                    .padding()
+            if !viewModel.searchResults.isEmpty {
+                searchListView
+            } else {
+                if viewModel.hasConnection {
+                    emptyView
+                } else{
+                    connectionIssueView
                 }
             }
         }
         .searchable(text: $viewModel.searchText)
         .padding(.top)
+    }
+    
+    private var searchListView: some View {
+        List(viewModel.searchResults, selection: $selection) { info in
+            Text(info.cityWithCountry)
+                .onTapGesture {
+                    selectedLocationCoordinates = LocationCoordinates(lat: info.latitude, lon: info.longitude)
+                    dismiss()
+                }
+        }.listStyle(.plain)
+    }
+    
+    private var emptyView: some View {
+        VStack(spacing: 10) {
+            Text("Find your city")
+                .font(.primaryTitle)
+            Text("Start searching to find weather information of your city.")
+                .font(.secondaryTitle)
+                .multilineTextAlignment(.center)
+        }
+        .foregroundStyle(Color.gray)
+        .padding()
+    }
+    
+    private var connectionIssueView: some View {
+        VStack(spacing: 10) {
+            Image(systemName: "wifi.slash")
+                .foregroundStyle(Color.red)
+            Text("Seems like your network connection is offline.\nPlease check your connection.")
+                .font(.secondaryTitle)
+                .multilineTextAlignment(.center)
+        }
+        .foregroundStyle(Color.gray)
+        .padding(.horizontal, 60)
     }
 }
 
