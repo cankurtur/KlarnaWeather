@@ -42,6 +42,7 @@
 		259B9DE02C56B686003A716D /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 259B9DDF2C56B686003A716D /* SearchViewModel.swift */; };
 		259B9DE22C56DB41003A716D /* WeatherViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 259B9DE12C56DB41003A716D /* WeatherViewModel.swift */; };
 		259B9DE72C56F230003A716D /* CompositionRoot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 259B9DE62C56F230003A716D /* CompositionRoot.swift */; };
+		259B9DEB2C57107D003A716D /* NetworkMonitorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 259B9DEA2C57107D003A716D /* NetworkMonitorManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -82,6 +83,7 @@
 		259B9DDF2C56B686003A716D /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		259B9DE12C56DB41003A716D /* WeatherViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewModel.swift; sourceTree = "<group>"; };
 		259B9DE62C56F230003A716D /* CompositionRoot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompositionRoot.swift; sourceTree = "<group>"; };
+		259B9DEA2C57107D003A716D /* NetworkMonitorManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkMonitorManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -204,6 +206,7 @@
 			children = (
 				259B9DAF2C557E23003A716D /* Config.swift */,
 				259B9DD42C568220003A716D /* LocationManager.swift */,
+				259B9DEA2C57107D003A716D /* NetworkMonitorManager.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -349,6 +352,7 @@
 				259B9D982C555FE0003A716D /* ParameterEncoding.swift in Sources */,
 				259B9DCC2C55BDE3003A716D /* GeographicalInfoResponseModel.swift in Sources */,
 				259B9D922C555BE7003A716D /* HTTPMethod.swift in Sources */,
+				259B9DEB2C57107D003A716D /* NetworkMonitorManager.swift in Sources */,
 				259B9DDE2C56AAE8003A716D /* SearchView.swift in Sources */,
 				259B9DD22C568167003A716D /* GeographicalInfoModel.swift in Sources */,
 				259B9DE02C56B686003A716D /* SearchViewModel.swift in Sources */,
