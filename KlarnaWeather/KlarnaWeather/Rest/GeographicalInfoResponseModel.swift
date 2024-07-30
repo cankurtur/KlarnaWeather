@@ -7,6 +7,8 @@
 
 import Foundation
 
+// MARK: - GeographicalInfoResponseModel
+
 struct GeographicalInfoResponseModel: Codable {
     let name: String
     let lat: Double

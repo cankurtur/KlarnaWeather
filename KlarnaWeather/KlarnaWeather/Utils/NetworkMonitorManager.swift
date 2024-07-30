@@ -8,6 +8,7 @@
 import Foundation
 import Network
 
+// MARK: - NetworkMonitorManager
 
 final class NetworkMonitorManager: ObservableObject {
     private let monitor: NWPathMonitor = NWPathMonitor()

@@ -7,6 +7,8 @@
 
 import SwiftUI
 
+// MARK: - HapticButton
+
 struct HapticButton<Label: View>: View {
     var feedbackStyle: UIImpactFeedbackGenerator.FeedbackStyle = .light
     var action: () -> Void

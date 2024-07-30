@@ -5,8 +5,10 @@
 //  Created by Can Kurtur on 28.07.2024.
 //
 
-import Foundation
 import CoreLocation
+import Foundation
+
+// MARK: - LocationManager
 
 final class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
     private let locationManager = CLLocationManager()

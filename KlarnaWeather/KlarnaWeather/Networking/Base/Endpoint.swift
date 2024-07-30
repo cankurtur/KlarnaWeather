@@ -7,6 +7,8 @@
 
 import Foundation
 
+// MARK: - Endpoint
+
 protocol Endpoint {
     var baseUrl: String { get }
     var path: String { get }
@@ -16,6 +18,8 @@ protocol Endpoint {
     var url: String { get }
     var method: HTTPMethod { get }
 }
+
+// MARK: - EndpointExtension
 
 extension Endpoint {
     var baseUrl: String {

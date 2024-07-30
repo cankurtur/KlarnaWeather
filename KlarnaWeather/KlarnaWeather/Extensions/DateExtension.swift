@@ -8,10 +8,10 @@
 import Foundation
 
 extension Date {
-    var currentTimeWithHours: String {
+    static var currentTimeWithHours: String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "HH:mm"
-        let currentTime = dateFormatter.string(from: self)
+        let currentTime = dateFormatter.string(from: Date())
         return currentTime
     }
 }

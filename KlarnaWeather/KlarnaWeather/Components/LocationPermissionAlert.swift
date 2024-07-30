@@ -7,6 +7,8 @@
 
 import SwiftUI
 
+// MARK: - LocationPermissionAlertView
+
 struct LocationPermissionAlertView: View {
     @Binding var showAlert: Bool
     
@@ -14,10 +16,10 @@ struct LocationPermissionAlertView: View {
         EmptyView()
             .alert(isPresented: $showAlert) {
                 Alert(
-                    title: Text("Location Permission"),
-                    message: Text("We need to access to your location. Please grant permission in Settings."),
-                    primaryButton: .default(Text("Cancel")),
-                    secondaryButton: .default(Text("Settings")) {
+                    title: Text(Localizable.locationPermission),
+                    message: Text(Localizable.needYourLocation),
+                    primaryButton: .default(Text(Localizable.cancel)),
+                    secondaryButton: .default(Text(Localizable.settings)) {
                         if let settingsURL = URL(string: UIApplication.openSettingsURLString) {
                             UIApplication.shared.open(settingsURL)
                         }

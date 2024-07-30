@@ -7,6 +7,8 @@
 
 import Foundation
 
+// MARK: - WeatherInfoResponseModel
+
 struct WeatherInfoResponseModel: Codable {
     let weather: [Weather]
     let main: Main
@@ -14,10 +16,14 @@ struct WeatherInfoResponseModel: Codable {
     let sys: Sys
 }
 
+// MARK: - Weather
+
 struct Weather: Codable {
     let id: Int
     let main: String
 }
+
+// MARK: - Main
 
 struct Main: Codable {
     let temp: Double
@@ -30,6 +36,8 @@ struct Main: Codable {
         case tempMax = "temp_max"
     }
 }
+
+// MARK: - Sys
 
 struct Sys: Codable {
     let country: String

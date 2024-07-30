@@ -7,12 +7,14 @@
 
 import SwiftUI
 
+// MARK: - AppImageButton
+
 struct AppImageButton: View {
-    private let imageName: String
+    private let image: Image
     private let action: () -> Void
     
-    init(imageName: String, action: @escaping () -> Void) {
-        self.imageName = imageName
+    init(image: Image, action: @escaping () -> Void) {
+        self.image = image
         self.action = action
     }
     
@@ -20,15 +22,11 @@ struct AppImageButton: View {
         HapticButton {
             action()
         } label: {
-            Image(systemName: imageName)
+            image
                 .resizable()
                 .aspectRatio(contentMode: .fit)
                 .tint(.primaryText)
                 .frame(width: 44, height: 44)
         }
     }
-}
-
-#Preview {
-    AppImageButton(imageName: "magnifyingglass.circle.fill", action: {})
 }

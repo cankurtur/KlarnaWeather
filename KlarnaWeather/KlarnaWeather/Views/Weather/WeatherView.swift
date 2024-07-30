@@ -21,15 +21,15 @@ struct WeatherView: View {
                 statusView
                 HStack(spacing: 50) {
                     RoundedImageTextView(
-                        imageName: "thermometer.high",
+                        image: Images.thermometerHigh,
                         imageColor: .red,
-                        title: "Max Temp",
+                        title: Localizable.maxTemp,
                         value: viewModel.weatherInfoModel.tempMax
                     )
                     RoundedImageTextView(
-                        imageName: "thermometer.low",
+                        image: Images.thermometerLow,
                         imageColor: .blue,
-                        title: "Min Temp",
+                        title: Localizable.minTemp,
                         value: viewModel.weatherInfoModel.tempMin
                     )
                 }
@@ -38,8 +38,8 @@ struct WeatherView: View {
             if !appSettings.hasNetworkConnection {
                 VStack {
                     ConnectionAlertView(
-                        warningTitle: "Internet connection is lost.",
-                        warningDescription: "Last updated time: \(Date().currentTimeWithHours)"
+                        warningTitle: Localizable.weatherLostConnection,
+                        warningDescription: String(format: Localizable.lastUpdatedTime, UserDefaultConfig.lastInfoFetchTime)
                     )
                     Spacer()
                 }
@@ -81,7 +81,7 @@ private extension WeatherView {
         VStack {
             HStack {
                 Spacer()
-                AppImageButton(imageName: "magnifyingglass.circle.fill") {
+                AppImageButton(image: Images.magnifyingglass) {
                     showSearch.toggle()
                 }
                 .sheet(isPresented: $showSearch, content: {
@@ -92,7 +92,7 @@ private extension WeatherView {
             if viewModel.showLocationButton {
                 HStack {
                     Spacer()
-                    AppImageButton(imageName: "location.circle.fill") {
+                    AppImageButton(image: Images.location) {
                         viewModel.didTapLocationButton()
                     }
                     Spacer()

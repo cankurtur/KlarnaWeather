@@ -23,6 +23,7 @@ final class WeatherViewModel: ObservableObject {
         self.setupBindigs()
     }
     
+    // This method use for action.
     func didTapLocationButton() {
         guard compositionRoot.locationManager.hasPermission else {
             showLocationPermissionAlert = true
@@ -79,6 +80,7 @@ private extension WeatherViewModel {
 // MARK: - Helpers
 
 private extension WeatherViewModel {
+    // This method check network connection first, if is reachable then fetch weather information of location.
     func checkConnectionAndFetchInfoIfNeeded(latitude: Double?, longitude: Double?, showLocationButton: Bool) {
         guard self.hasNetworkConnection else { return }
         
@@ -91,6 +93,7 @@ private extension WeatherViewModel {
         }
     }
     
+    // This method use for fetching weather information of location.
     func fetchWeatherInformation(latitude: Double?, longitude: Double?, completion: @escaping ()-> Void) {
         guard let latitude, let longitude else { return }
         
@@ -108,23 +111,21 @@ private extension WeatherViewModel {
                 updateWeatherInfoModel(with: response)
             }
             UserDefaultConfig.lastWeatherResponse = response
+            UserDefaultConfig.lastInfoFetchTime = Date.currentTimeWithHours
             completion()
         }
     }
     
+    // This method use for updating weather information.
     func updateWeatherInfoModel(with response: WeatherInfoResponseModel?) {
         guard let response else { return }
         
         weatherInfoModel = WeatherInfoModel(
             iconName: WeatherInfoModel.IconName.ImageName(with: response.weather.first?.id ?? 0),
-            temp: String(format: "%.1f", response.main.temp) + " °C",
-            tempMin: "\(response.main.tempMin) °C",
-            tempMax: "\(response.main.tempMax) °C",
+            temp: String(format: Localizable.weatherWithCelcius, response.main.temp),
+            tempMin: String(format: Localizable.weatherWithCelcius, response.main.tempMin),
+            tempMax: String(format: Localizable.weatherWithCelcius, response.main.tempMax),
             cityWithCountry: "\(response.name), \(response.sys.country)"
         )
-    }
-    
-    func handleFailedResponse() {
-        
     }
 }

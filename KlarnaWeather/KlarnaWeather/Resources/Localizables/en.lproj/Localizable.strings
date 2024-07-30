@@ -1,0 +1,34 @@
+/* 
+  Localizable.strings
+  KlarnaWeather
+
+  Created by Can Kurtur on 30.07.2024.
+  
+*/
+
+// General
+
+"general.cancel" = "Cancel";
+"general.settings" = "Settings";
+
+// Weather
+
+"weather.maxTemp" = "Max Temp";
+"weather.minTemp" = "Min Temp";
+"weather.withCelcius" = "%.1f °C";
+
+// Search
+
+"search.findYourCity" = "Find your city";
+"search.startSearching" = "Start searching to find weather information of your city.";
+
+// Connection Alert
+
+"connectionAlert.weatherLostConnection" = "Internet connection is lost.";
+"connectionAlert.lastUpdatedTime" = "Last updated time: %@";
+"connectionAlert.searchLostConnection" = "Seems like your network connection is offline.\nPlease check your connection.";
+
+// Location Permission Alert
+
+"locationPermissionAlert.locationPermission" = "Location Permission";
+"locationPermissionAlert.weNeedYourLocation" = "We need to access to your location. Please grant permission in Settings.";

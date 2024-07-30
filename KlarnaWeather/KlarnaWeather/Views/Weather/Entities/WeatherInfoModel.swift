@@ -7,6 +7,8 @@
 
 import Foundation
 
+// MARK: - WeatherInfoModel
+
 struct WeatherInfoModel {
     let iconName: IconName
     let temp: String
@@ -15,7 +17,7 @@ struct WeatherInfoModel {
     let cityWithCountry: String
     
     static let defaultValue = WeatherInfoModel(
-        iconName: .thunderstorm,
+        iconName: .noInfo,
         temp: "-",
         tempMin: "-",
         tempMax: "-",

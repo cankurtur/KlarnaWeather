@@ -7,12 +7,16 @@
 
 import Foundation
 
+// MARK: - Keys
+
 private enum Keys: String {
     case openWeatherMapAPIKey
     case openWeatherMapBaseUrl
     case defaultSearchLimit
     case temperatureUnitKey
 }
+
+// MARK: - Config
 
 final class Config: NSObject {
     static let shared: Config = Config()
@@ -25,6 +29,8 @@ final class Config: NSObject {
         self.configs = (NSDictionary(contentsOfFile: path)!.object(forKey: currentConfiguration) as! NSDictionary)
     }
 }
+
+// MARK: - ConfigKeys
 
 extension Config {
     var openWeatherMapAPIKey: String {

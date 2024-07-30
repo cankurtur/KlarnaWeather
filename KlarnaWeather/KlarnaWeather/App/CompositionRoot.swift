@@ -7,10 +7,14 @@
 
 import Foundation
 
+// MARK: - CompositionRootInterface
+
 protocol CompositionRootInterface {
     var networkManager: NetworkManagerProtocol { get set }
     var locationManager: LocationManager { get set }
 }
+
+// MARK: - CompositionRoot
 
 final class CompositionRoot: CompositionRootInterface {
     

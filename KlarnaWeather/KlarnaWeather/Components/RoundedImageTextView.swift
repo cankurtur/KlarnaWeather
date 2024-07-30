@@ -7,14 +7,16 @@
 
 import SwiftUI
 
+// MARK: - RoundedImageTextView
+
 struct RoundedImageTextView: View {
-    var imageName: String
+    var image: Image
     var imageColor: Color
     var title: String
     var value: String
     
-    init(imageName: String, imageColor: Color, title: String, value: String) {
-        self.imageName = imageName
+    init(image: Image, imageColor: Color, title: String, value: String) {
+        self.image = image
         self.imageColor = imageColor
         self.title = title
         self.value = value
@@ -27,7 +29,7 @@ struct RoundedImageTextView: View {
                     .frame(width: 40,height: 40)
                     .foregroundStyle(.white)
                 HStack{
-                    Image(systemName: imageName)
+                    image
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .frame(width: 20, height: 20)
@@ -42,8 +44,4 @@ struct RoundedImageTextView: View {
             }
         }
     }
-}
-
-#Preview {
-    RoundedImageTextView(imageName: "thermometer.high", imageColor: .red ,title: "Max Temp", value: "76 C")
 }

@@ -5,8 +5,10 @@
 //  Created by Can Kurtur on 30.07.2024.
 //
 
-import SwiftUI
 import Combine
+import SwiftUI
+
+// MARK: - AppSettings
 
 final class AppSettings: ObservableObject {
     @Published var hasNetworkConnection: Bool = false
