@@ -9,7 +9,7 @@ import SwiftUI
 
 extension Font {
     static var extraLarge: Font {
-        .system(size: 72, weight: .medium)
+        .system(size: 50, weight: .medium)
     }
     
     static var primaryHeadline: Font {

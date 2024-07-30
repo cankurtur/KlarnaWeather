@@ -7,6 +7,8 @@
 
 import SwiftUI
 
+// MARK: - AppLinearGradient
+
 struct AppLinearGradient: View {
     let startPoint: UnitPoint
     let endPoint: UnitPoint
@@ -20,8 +22,4 @@ struct AppLinearGradient: View {
     var body: some View {
         LinearGradient(colors: [.appMain, .blue], startPoint: startPoint, endPoint: endPoint)
     }
-}
-
-#Preview {
-    AppLinearGradient()
 }

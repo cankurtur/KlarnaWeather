@@ -7,6 +7,8 @@
 
 import Foundation
 
+// MARK: - WeatherEndpointItem
+
 enum WeatherEndpointItem: Endpoint {
     case fetchWeatherInfo(latitude: Double, longitude: Double)
     case fetchGeographicalInfo(cityName: String, limit: Int)

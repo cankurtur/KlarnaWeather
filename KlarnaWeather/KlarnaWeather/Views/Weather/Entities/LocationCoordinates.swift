@@ -7,6 +7,8 @@
 
 import Foundation
 
+// MARK: - LocationCoordinates
+
 struct LocationCoordinates {
     let latitude: Double?
     let longitude: Double?

@@ -7,15 +7,21 @@
 
 import Foundation
 
+// MARK: - APIError
+
 protocol APIError: Codable, AnyObject {
     var message: String { get }
     var statusCode: Int? { get set }
 }
 
+// MARK: - ClientError
+
 class ClientError: APIError {
     var message: String
     var statusCode: Int?
 }
+
+// MARK: - APIClientError
 
 enum APIClientError: Error {
     case handledError(apiError: APIError)

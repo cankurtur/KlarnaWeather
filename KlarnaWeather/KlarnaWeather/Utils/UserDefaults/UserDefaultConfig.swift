@@ -9,9 +9,13 @@ import Foundation
 
 enum UserDefaultKeys: String {
     case lastWeatherResponse
+    case lastInfoFetchTime
 }
 
 struct UserDefaultConfig {
     @UserDefaultProperty(key: UserDefaultKeys.lastWeatherResponse, defaultValue: nil)
     static var lastWeatherResponse: WeatherInfoResponseModel?
+    
+    @UserDefaultProperty(key: UserDefaultKeys.lastInfoFetchTime, defaultValue: "")
+    static var lastInfoFetchTime: String
 }

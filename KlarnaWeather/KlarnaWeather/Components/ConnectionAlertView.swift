@@ -7,6 +7,8 @@
 
 import SwiftUI
 
+// MARK: - ConnectionAlertView
+
 struct ConnectionAlertView: View {
     var warningTitle: String
     var warningDescription: String
@@ -36,8 +38,4 @@ struct ConnectionAlertView: View {
             .transition(.move(edge: .top))
             .animation(.smooth)
     }
-}
-
-#Preview {
-    ConnectionAlertView(warningTitle: "MessageMessageMessageMessage", warningDescription: "DescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescription")
 }

@@ -54,9 +54,9 @@ private extension SearchView {
     
     var emptyView: some View {
         VStack(spacing: 10) {
-            Text("Find your city")
+            Text(Localizable.findYourCity)
                 .font(.primaryTitle)
-            Text("Start searching to find weather information of your city.")
+            Text(Localizable.startSearching)
                 .font(.secondaryTitle)
                 .multilineTextAlignment(.center)
         }
@@ -66,9 +66,9 @@ private extension SearchView {
     
     var connectionIssueView: some View {
         VStack(spacing: 10) {
-            Image(systemName: "wifi.slash")
+            Images.wifiSlash
                 .foregroundStyle(Color.red)
-            Text("Seems like your network connection is offline.\nPlease check your connection.")
+            Text(Localizable.searchLostConnection)
                 .font(.secondaryTitle)
                 .multilineTextAlignment(.center)
         }
