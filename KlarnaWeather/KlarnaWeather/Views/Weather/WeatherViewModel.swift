@@ -80,9 +80,11 @@ private extension WeatherViewModel {
 // MARK: - Helpers
 
 private extension WeatherViewModel {
-    // This method check network connection first, if is reachable then fetch weather information of location.
+    // This method check network connection first, if is reachable then fetch weather information of location. If not, set cache value to information.
     func checkConnectionAndFetchInfoIfNeeded(latitude: Double?, longitude: Double?, showLocationButton: Bool) {
-        guard self.hasNetworkConnection else { return }
+        guard self.hasNetworkConnection else {
+            return updateWeatherInfoModel(with: UserDefaultConfig.lastWeatherResponse)
+        }
         
         self.fetchWeatherInformation(latitude: latitude, longitude: longitude) {
             Task {
