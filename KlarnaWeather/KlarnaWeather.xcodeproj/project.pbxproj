@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		252FAC532C59629D0053F4A2 /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 252FAC522C59629D0053F4A2 /* AppSettings.swift */; };
+		252FAC592C5986BE0053F4A2 /* RoundedImageTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 252FAC582C5986BE0053F4A2 /* RoundedImageTextView.swift */; };
 		259B9D7E2C555624003A716D /* KlarnaWeatherApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 259B9D7D2C555624003A716D /* KlarnaWeatherApp.swift */; };
 		259B9D822C555625003A716D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 259B9D812C555625003A716D /* Assets.xcassets */; };
 		259B9D852C555625003A716D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 259B9D842C555625003A716D /* Preview Assets.xcassets */; };
@@ -54,6 +55,7 @@
 
 /* Begin PBXFileReference section */
 		252FAC522C59629D0053F4A2 /* AppSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettings.swift; sourceTree = "<group>"; };
+		252FAC582C5986BE0053F4A2 /* RoundedImageTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedImageTextView.swift; sourceTree = "<group>"; };
 		259B9D7A2C555624003A716D /* KlarnaWeather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KlarnaWeather.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		259B9D7D2C555624003A716D /* KlarnaWeatherApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KlarnaWeatherApp.swift; sourceTree = "<group>"; };
 		259B9D812C555625003A716D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -246,6 +248,7 @@
 				259B9DD92C569EC7003A716D /* AppImageButton.swift */,
 				25BA3F652C581D50004D1922 /* ConnectionAlertView.swift */,
 				25BA3F7D2C59124C004D1922 /* LocationPermissionAlert.swift */,
+				252FAC582C5986BE0053F4A2 /* RoundedImageTextView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -392,6 +395,7 @@
 				259B9DEB2C57107D003A716D /* NetworkMonitorManager.swift in Sources */,
 				25BA3F752C585C7D004D1922 /* UserDefaultConfig.swift in Sources */,
 				259B9DDE2C56AAE8003A716D /* SearchView.swift in Sources */,
+				252FAC592C5986BE0053F4A2 /* RoundedImageTextView.swift in Sources */,
 				25BA3F7E2C59124C004D1922 /* LocationPermissionAlert.swift in Sources */,
 				259B9DD22C568167003A716D /* GeographicalInfoModel.swift in Sources */,
 				259B9DE02C56B686003A716D /* SearchViewModel.swift in Sources */,
