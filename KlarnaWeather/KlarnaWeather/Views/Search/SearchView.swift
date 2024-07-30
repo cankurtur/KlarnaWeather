@@ -15,27 +15,42 @@ struct SearchView: View {
     
     var body: some View {
         NavigationView {
-            if !viewModel.searchResults.isEmpty {
-                searchListView
-            } else {
-                if viewModel.hasConnection {
-                    emptyView
-                } else{
-                    connectionIssueView
+            Group {
+                if !viewModel.searchResults.isEmpty {
+                    searchListView
+                } else {
+                    if viewModel.hasConnection {
+                        emptyView
+                    } else{
+                        connectionIssueView
+                    }
                 }
             }
+            .navigationTitle("Search")
+//            .toolbar(content: {
+//                ToolbarItem(placement: .topBarLeading) {
+//                    Button(action: {}, label: {
+//                        Text("Back")
+//                    })
+//                }
+//            })
         }
         .searchable(text: $viewModel.searchText)
+        .autocorrectionDisabled()
         .padding(.top)
     }
     
     private var searchListView: some View {
         List(viewModel.searchResults, selection: $selection) { info in
-            Text(info.cityWithCountry)
-                .onTapGesture {
-                    selectedLocationCoordinates = LocationCoordinates(lat: info.latitude, lon: info.longitude)
-                    dismiss()
-                }
+            HStack {
+                Text(info.cityWithCountry)
+                Spacer()
+            }
+            .contentShape(Rectangle())
+            .onTapGesture {
+                selectedLocationCoordinates = LocationCoordinates(lat: info.latitude, lon: info.longitude)
+                dismiss()
+            }
         }.listStyle(.plain)
     }
     

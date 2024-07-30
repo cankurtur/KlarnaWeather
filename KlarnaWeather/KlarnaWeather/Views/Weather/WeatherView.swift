@@ -22,13 +22,13 @@ struct WeatherView: View {
             buttonsView
             if !viewModel.hasConnection {
                 VStack {
-                    AlertView(warningTitle: "Internet connection is lost.", warningDescription: "Last updated value : 23:10")
+                    ConnectionAlertView(warningTitle: "Internet connection is lost.", warningDescription: "Last updated time : \(Date().currentTimeWithHours) ")
                     Spacer()
                 }.ignoresSafeArea()
             }
-        }.onAppear(perform: {
-            viewModel.fetchCurrentLocationWeatherInfo()
-        })
+        }.overlay {
+            LocationPermissionAlertView(showAlert: $viewModel.showLocationPermissionAlert)
+        }
     }
     
     private var cityTextView: some View {
@@ -62,12 +62,14 @@ struct WeatherView: View {
                 })
             }
             Spacer()
-            HStack {
-                Spacer()
-                AppImageButton(imageName: "location.circle.fill") {
-                    viewModel.fetchCurrentLocationWeatherInfo()
+            if viewModel.selectedLocationCoordinates != nil {
+                HStack {
+                    Spacer()
+                    AppImageButton(imageName: "location.circle.fill") {
+                        viewModel.didTapLocationButton()
+                    }
+                    Spacer()
                 }
-                Spacer()
             }
         }
         .padding(.all, 30)
