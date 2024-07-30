@@ -11,6 +11,7 @@ private enum Keys: String {
     case openWeatherMapAPIKey
     case openWeatherMapBaseUrl
     case defaultSearchLimit
+    case temperatureUnitKey
 }
 
 final class Config: NSObject {
@@ -36,5 +37,9 @@ extension Config {
     
     var defaultSearchLimit: Int {
         return configs.object(forKey: Keys.defaultSearchLimit.rawValue) as! Int
+    }
+    
+    var temperatureUnitKey: String {
+        return configs.object(forKey: Keys.temperatureUnitKey.rawValue) as! String
     }
 }

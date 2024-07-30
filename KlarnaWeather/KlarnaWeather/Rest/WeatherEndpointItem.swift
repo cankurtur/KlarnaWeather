@@ -35,6 +35,7 @@ enum WeatherEndpointItem: Endpoint {
             let queryItems: [String: Any] = [
                 "lat": latitude,
                 "lon": longitude,
+                "units": Config.shared.temperatureUnitKey,
                 "appid": apiKey
             ]
             return queryItems
