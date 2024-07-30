@@ -10,19 +10,15 @@ import Foundation
 struct WeatherInfoModel {
     let iconName: IconName
     let temp: String
-    let feelsLike: String
     let tempMin: String
     let tempMax: String
-    let humidity: String
     let cityWithCountry: String
     
     static let defaultValue = WeatherInfoModel(
         iconName: .thunderstorm,
         temp: "-",
-        feelsLike: "-",
         tempMin: "-",
         tempMax: "-",
-        humidity: "-",
         cityWithCountry: "-"
     )
     

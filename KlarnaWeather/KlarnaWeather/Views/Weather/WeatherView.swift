@@ -19,13 +19,27 @@ struct WeatherView: View {
             VStack {
                 cityTextView
                 statusView
+                HStack(spacing: 50) {
+                    RoundedImageTextView(
+                        imageName: "thermometer.high",
+                        imageColor: .red,
+                        title: "Max Temp",
+                        value: viewModel.weatherInfoModel.tempMax
+                    )
+                    RoundedImageTextView(
+                        imageName: "thermometer.low",
+                        imageColor: .blue,
+                        title: "Min Temp",
+                        value: viewModel.weatherInfoModel.tempMin
+                    )
+                }
             }
             buttonsView
             if !appSettings.hasNetworkConnection {
                 VStack {
                     ConnectionAlertView(
                         warningTitle: "Internet connection is lost.",
-                        warningDescription: "Last updated time : \(Date().currentTimeWithHours)"
+                        warningDescription: "Last updated time: \(Date().currentTimeWithHours)"
                     )
                     Spacer()
                 }
@@ -56,7 +70,7 @@ private extension WeatherView {
                 .renderingMode(.original)
                 .resizable()
                 .aspectRatio(contentMode: .fit)
-                .frame(width: 200, height: 200)
+                .frame(width: 150, height: 150)
             Text(viewModel.weatherInfoModel.temp)
                 .font(.extraLarge)
                 .foregroundStyle(Color.primary)

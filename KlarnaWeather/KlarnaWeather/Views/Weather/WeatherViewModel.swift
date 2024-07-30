@@ -118,10 +118,8 @@ private extension WeatherViewModel {
         weatherInfoModel = WeatherInfoModel(
             iconName: WeatherInfoModel.IconName.ImageName(with: response.weather.first?.id ?? 0),
             temp: String(format: "%.1f", response.main.temp) + " °C",
-            feelsLike: "\(response.main.feelsLike)",
-            tempMin: "\(response.main.tempMin)",
-            tempMax: "\(response.main.tempMax)",
-            humidity: "\(response.main.humidity)",
+            tempMin: "\(response.main.tempMin) °C",
+            tempMax: "\(response.main.tempMax) °C",
             cityWithCountry: "\(response.name), \(response.sys.country)"
         )
     }
