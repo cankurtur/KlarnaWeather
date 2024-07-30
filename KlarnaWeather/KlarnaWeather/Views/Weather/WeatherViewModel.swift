@@ -11,10 +11,10 @@ import Combine
 final class WeatherViewModel: ObservableObject {
     @Published var weatherInfoModel: WeatherInfoModel
     @Published var selectedLocationCoordinates: LocationCoordinates?
-    @Published var hasConnection: Bool = false
     @Published var showLocationPermissionAlert: Bool = false
-    
+    @Published var showLocationButton: Bool = false
     private let compositionRoot: CompositionRootInterface
+    private var hasNetworkConnection: Bool = false
     private var cancellables = Set<AnyCancellable>()
     
     init() {
@@ -28,18 +28,18 @@ final class WeatherViewModel: ObservableObject {
             showLocationPermissionAlert = true
             return
         }
-        
+                
         let location = compositionRoot.locationManager.currentLocation
-        fetchWeatherInformation(latitude: location?.latitude, longitude: location?.longitude)
-        
-        selectedLocationCoordinates = nil
+        self.checkConnectionAndFetchInfoIfNeeded(
+            latitude: location?.latitude,
+            longitude: location?.longitude,
+            showLocationButton: false
+        )
     }
-
-    private func fetchSelectedLocationWeatherInfo(with location: LocationCoordinates?) {
-        let latitude = location?.lat
-        let longitude = location?.lon
-        
-        fetchWeatherInformation(latitude: latitude, longitude: longitude)
+    
+    // This method use for setting current connection with given value.
+    func setConnectionStatus(with connection: Bool) {
+        hasNetworkConnection = connection
     }
 }
 
@@ -47,27 +47,17 @@ final class WeatherViewModel: ObservableObject {
 
 private extension WeatherViewModel {
     func setupBindigs() {
-        // Connection Binding
-        compositionRoot.networkMonitorManager.$isReachable
-            .sink { [weak self] isReachable in
-                guard let self else { return }
-                
-                Task {
-                    await MainActor.run {
-                        self.hasConnection = isReachable
-                        self.handleWeatherInfoAfterConnection()
-                    }
-                }
-            }
-            .store(in: &cancellables)
-        
         // Selected Location Binding
         $selectedLocationCoordinates
             .sink { [weak self] location in
                 guard let self else { return }
-                guard location != nil else { return }
+                guard self.hasNetworkConnection else { return }
                 
-                self.fetchSelectedLocationWeatherInfo(with: location)
+                self.checkConnectionAndFetchInfoIfNeeded(
+                    latitude: location?.latitude,
+                    longitude: location?.longitude,
+                    showLocationButton: true
+                )
             }
             .store(in: &cancellables)
         
@@ -75,7 +65,12 @@ private extension WeatherViewModel {
         compositionRoot.locationManager.$firstLocation
             .sink { [weak self] location in
                 guard let self else { return }
-                fetchWeatherInformation(latitude: location?.latitude, longitude: location?.longitude)
+                
+                self.checkConnectionAndFetchInfoIfNeeded(
+                    latitude: location?.latitude,
+                    longitude: location?.longitude,
+                    showLocationButton: false
+                )
             }
             .store(in: &cancellables)
     }
@@ -84,12 +79,19 @@ private extension WeatherViewModel {
 // MARK: - Helpers
 
 private extension WeatherViewModel {
-    func fetchWeatherInformation(latitude: Double?, longitude: Double?) {
-        guard compositionRoot.networkMonitorManager.isReachable else {
-            setCacheWeatherInfoIfHas()
-            return
-        }
+    func checkConnectionAndFetchInfoIfNeeded(latitude: Double?, longitude: Double?, showLocationButton: Bool) {
+        guard self.hasNetworkConnection else { return }
         
+        self.fetchWeatherInformation(latitude: latitude, longitude: longitude) {
+            Task {
+                await MainActor.run {
+                    self.showLocationButton = showLocationButton
+                }
+            }
+        }
+    }
+    
+    func fetchWeatherInformation(latitude: Double?, longitude: Double?, completion: @escaping ()-> Void) {
         guard let latitude, let longitude else { return }
         
         Task {
@@ -105,20 +107,8 @@ private extension WeatherViewModel {
             await MainActor.run {
                 updateWeatherInfoModel(with: response)
             }
-        }
-    }
-    
-    func setCacheWeatherInfoIfHas() {
-        updateWeatherInfoModel(with: UserDefaultConfig.lastWeatherResponse)
-    }
-    
-    func handleWeatherInfoAfterConnection() {
-        if selectedLocationCoordinates != nil {
-            let location = selectedLocationCoordinates
-            fetchSelectedLocationWeatherInfo(with: location)
-        } else {
-            let location = compositionRoot.locationManager.currentLocation
-            fetchWeatherInformation(latitude: location?.latitude, longitude: location?.longitude)
+            UserDefaultConfig.lastWeatherResponse = response
+            completion()
         }
     }
     

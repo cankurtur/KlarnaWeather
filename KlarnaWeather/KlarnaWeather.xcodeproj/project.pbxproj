@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		252FAC532C59629D0053F4A2 /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 252FAC522C59629D0053F4A2 /* AppSettings.swift */; };
 		259B9D7E2C555624003A716D /* KlarnaWeatherApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 259B9D7D2C555624003A716D /* KlarnaWeatherApp.swift */; };
 		259B9D822C555625003A716D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 259B9D812C555625003A716D /* Assets.xcassets */; };
 		259B9D852C555625003A716D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 259B9D842C555625003A716D /* Preview Assets.xcassets */; };
@@ -52,6 +53,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		252FAC522C59629D0053F4A2 /* AppSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettings.swift; sourceTree = "<group>"; };
 		259B9D7A2C555624003A716D /* KlarnaWeather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KlarnaWeather.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		259B9D7D2C555624003A716D /* KlarnaWeatherApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KlarnaWeatherApp.swift; sourceTree = "<group>"; };
 		259B9D812C555625003A716D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -198,6 +200,7 @@
 			children = (
 				259B9D7D2C555624003A716D /* KlarnaWeatherApp.swift */,
 				259B9DE62C56F230003A716D /* CompositionRoot.swift */,
+				252FAC522C59629D0053F4A2 /* AppSettings.swift */,
 				259B9DAC2C557D18003A716D /* Config.plist */,
 			);
 			path = App;
@@ -409,6 +412,7 @@
 				259B9DB82C558AF1003A716D /* Fonts.swift in Sources */,
 				259B9D9E2C5563A3003A716D /* RequestBuilder.swift in Sources */,
 				259B9DA72C556914003A716D /* URLResponseExtension.swift in Sources */,
+				252FAC532C59629D0053F4A2 /* AppSettings.swift in Sources */,
 				259B9DC82C55BA60003A716D /* WeatherEndpointItem.swift in Sources */,
 				259B9DB62C558A8A003A716D /* Colors.swift in Sources */,
 				25BA3F7C2C59066B004D1922 /* LocationCoordinates.swift in Sources */,
