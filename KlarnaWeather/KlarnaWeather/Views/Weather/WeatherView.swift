@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct WeatherView: View {
+    @EnvironmentObject var appSettings: AppSettings
     @StateObject var viewModel = WeatherViewModel()
     @State var showSearch: Bool = false
     
@@ -20,24 +21,36 @@ struct WeatherView: View {
                 statusView
             }
             buttonsView
-            if !viewModel.hasConnection {
+            if !appSettings.hasNetworkConnection {
                 VStack {
-                    ConnectionAlertView(warningTitle: "Internet connection is lost.", warningDescription: "Last updated time : \(Date().currentTimeWithHours) ")
+                    ConnectionAlertView(
+                        warningTitle: "Internet connection is lost.",
+                        warningDescription: "Last updated time : \(Date().currentTimeWithHours)"
+                    )
                     Spacer()
-                }.ignoresSafeArea()
+                }
+                .ignoresSafeArea()
             }
         }.overlay {
             LocationPermissionAlertView(showAlert: $viewModel.showLocationPermissionAlert)
         }
+        .onReceive(appSettings.$hasNetworkConnection, perform: { connection in
+            viewModel.setConnectionStatus(with: connection)
+        })
     }
-    
-    private var cityTextView: some View {
+}
+
+// MARK: - Views
+
+private extension WeatherView {
+    var cityTextView: some View {
         Text(viewModel.weatherInfoModel.cityWithCountry)
             .font(.primaryHeadline)
             .foregroundStyle(Color.primaryText)
+            .padding()
     }
     
-    private var statusView: some View {
+    var statusView: some View {
         VStack {
             Image(systemName: viewModel.weatherInfoModel.iconName.rawValue)
                 .renderingMode(.original)
@@ -50,7 +63,7 @@ struct WeatherView: View {
         }
     }
     
-    private var buttonsView: some View {
+    var buttonsView: some View {
         VStack {
             HStack {
                 Spacer()
@@ -62,7 +75,7 @@ struct WeatherView: View {
                 })
             }
             Spacer()
-            if viewModel.selectedLocationCoordinates != nil {
+            if viewModel.showLocationButton {
                 HStack {
                     Spacer()
                     AppImageButton(imageName: "location.circle.fill") {
@@ -75,29 +88,6 @@ struct WeatherView: View {
         .padding(.all, 30)
         .padding(.top, 30)
     }
-    
-//    private var detailView: some View {
-//        HStack(spacing: 10) {
-//            ZStack {
-//                RoundedRectangle(cornerRadius: 30)
-//                    .frame(width: 60,height: 60)
-//                    .foregroundStyle(Color.white)
-//                HStack{
-//                    Image(systemName: "thermometer")
-//                        .resizable()
-//                        .aspectRatio(contentMode: .fit)
-//                        .frame(width: 30, height: 30)
-//                        .foregroundStyle(.black)
-//                }
-//            }
-//            VStack(spacing: 5) {
-//                Text("Feels like")
-//                    .font(.primaryMidTitle)
-//                Text("76")
-//                    .font(.secondaryMidTitle)
-//            }
-//        }
-//    }
 }
 
 #Preview {
