@@ -43,7 +43,12 @@
 		259B9DE22C56DB41003A716D /* WeatherViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 259B9DE12C56DB41003A716D /* WeatherViewModel.swift */; };
 		259B9DE72C56F230003A716D /* CompositionRoot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 259B9DE62C56F230003A716D /* CompositionRoot.swift */; };
 		259B9DEB2C57107D003A716D /* NetworkMonitorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 259B9DEA2C57107D003A716D /* NetworkMonitorManager.swift */; };
-		25BA3F662C581D50004D1922 /* AlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25BA3F652C581D50004D1922 /* AlertView.swift */; };
+		25BA3F662C581D50004D1922 /* ConnectionAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25BA3F652C581D50004D1922 /* ConnectionAlertView.swift */; };
+		25BA3F752C585C7D004D1922 /* UserDefaultConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25BA3F742C585C7D004D1922 /* UserDefaultConfig.swift */; };
+		25BA3F772C585C99004D1922 /* UserDefaultProperty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25BA3F762C585C99004D1922 /* UserDefaultProperty.swift */; };
+		25BA3F7A2C590652004D1922 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25BA3F792C590652004D1922 /* DateExtension.swift */; };
+		25BA3F7C2C59066B004D1922 /* LocationCoordinates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25BA3F7B2C59066B004D1922 /* LocationCoordinates.swift */; };
+		25BA3F7E2C59124C004D1922 /* LocationPermissionAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25BA3F7D2C59124C004D1922 /* LocationPermissionAlert.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -85,7 +90,12 @@
 		259B9DE12C56DB41003A716D /* WeatherViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewModel.swift; sourceTree = "<group>"; };
 		259B9DE62C56F230003A716D /* CompositionRoot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompositionRoot.swift; sourceTree = "<group>"; };
 		259B9DEA2C57107D003A716D /* NetworkMonitorManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkMonitorManager.swift; sourceTree = "<group>"; };
-		25BA3F652C581D50004D1922 /* AlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertView.swift; sourceTree = "<group>"; };
+		25BA3F652C581D50004D1922 /* ConnectionAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionAlertView.swift; sourceTree = "<group>"; };
+		25BA3F742C585C7D004D1922 /* UserDefaultConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultConfig.swift; sourceTree = "<group>"; };
+		25BA3F762C585C99004D1922 /* UserDefaultProperty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultProperty.swift; sourceTree = "<group>"; };
+		25BA3F792C590652004D1922 /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
+		25BA3F7B2C59066B004D1922 /* LocationCoordinates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationCoordinates.swift; sourceTree = "<group>"; };
+		25BA3F7D2C59124C004D1922 /* LocationPermissionAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationPermissionAlert.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,6 +133,7 @@
 				259B9DB22C55899B003A716D /* Views */,
 				259B9DBB2C558E35003A716D /* Components */,
 				259B9DAE2C557E05003A716D /* Utils */,
+				25BA3F782C590645004D1922 /* Extensions */,
 				259B9DAB2C557C81003A716D /* Resources */,
 				259B9DC62C55BA3F003A716D /* Rest */,
 				259B9D8B2C5559AA003A716D /* Networking */,
@@ -206,6 +217,7 @@
 		259B9DAE2C557E05003A716D /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				25BA3F732C585C48004D1922 /* UserDefaults */,
 				259B9DAF2C557E23003A716D /* Config.swift */,
 				259B9DD42C568220003A716D /* LocationManager.swift */,
 				259B9DEA2C57107D003A716D /* NetworkMonitorManager.swift */,
@@ -229,7 +241,8 @@
 				259B9DBC2C558E44003A716D /* AppLinearGradient.swift */,
 				259B9DD72C569D93003A716D /* HapticButton.swift */,
 				259B9DD92C569EC7003A716D /* AppImageButton.swift */,
-				25BA3F652C581D50004D1922 /* AlertView.swift */,
+				25BA3F652C581D50004D1922 /* ConnectionAlertView.swift */,
+				25BA3F7D2C59124C004D1922 /* LocationPermissionAlert.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -268,6 +281,7 @@
 			isa = PBXGroup;
 			children = (
 				259B9DCF2C568159003A716D /* WeatherInfoModel.swift */,
+				25BA3F7B2C59066B004D1922 /* LocationCoordinates.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -278,6 +292,23 @@
 				259B9DD12C568167003A716D /* GeographicalInfoModel.swift */,
 			);
 			path = Entities;
+			sourceTree = "<group>";
+		};
+		25BA3F732C585C48004D1922 /* UserDefaults */ = {
+			isa = PBXGroup;
+			children = (
+				25BA3F742C585C7D004D1922 /* UserDefaultConfig.swift */,
+				25BA3F762C585C99004D1922 /* UserDefaultProperty.swift */,
+			);
+			path = UserDefaults;
+			sourceTree = "<group>";
+		};
+		25BA3F782C590645004D1922 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				25BA3F792C590652004D1922 /* DateExtension.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -356,17 +387,21 @@
 				259B9DCC2C55BDE3003A716D /* GeographicalInfoResponseModel.swift in Sources */,
 				259B9D922C555BE7003A716D /* HTTPMethod.swift in Sources */,
 				259B9DEB2C57107D003A716D /* NetworkMonitorManager.swift in Sources */,
+				25BA3F752C585C7D004D1922 /* UserDefaultConfig.swift in Sources */,
 				259B9DDE2C56AAE8003A716D /* SearchView.swift in Sources */,
+				25BA3F7E2C59124C004D1922 /* LocationPermissionAlert.swift in Sources */,
 				259B9DD22C568167003A716D /* GeographicalInfoModel.swift in Sources */,
 				259B9DE02C56B686003A716D /* SearchViewModel.swift in Sources */,
 				259B9DB02C557E23003A716D /* Config.swift in Sources */,
 				259B9DE72C56F230003A716D /* CompositionRoot.swift in Sources */,
 				259B9DA92C556D66003A716D /* BaseURL.swift in Sources */,
 				259B9DD02C568159003A716D /* WeatherInfoModel.swift in Sources */,
+				25BA3F772C585C99004D1922 /* UserDefaultProperty.swift in Sources */,
+				25BA3F7A2C590652004D1922 /* DateExtension.swift in Sources */,
 				259B9D8F2C555A91003A716D /* HTTPHeader.swift in Sources */,
 				259B9D942C555D96003A716D /* HTTPHeaders.swift in Sources */,
 				259B9DCA2C55BDD0003A716D /* WeatherInfoResponseModel.swift in Sources */,
-				25BA3F662C581D50004D1922 /* AlertView.swift in Sources */,
+				25BA3F662C581D50004D1922 /* ConnectionAlertView.swift in Sources */,
 				259B9D9A2C556183003A716D /* Responses.swift in Sources */,
 				259B9DD52C568220003A716D /* LocationManager.swift in Sources */,
 				259B9DD82C569D93003A716D /* HapticButton.swift in Sources */,
@@ -376,6 +411,7 @@
 				259B9DA72C556914003A716D /* URLResponseExtension.swift in Sources */,
 				259B9DC82C55BA60003A716D /* WeatherEndpointItem.swift in Sources */,
 				259B9DB62C558A8A003A716D /* Colors.swift in Sources */,
+				25BA3F7C2C59066B004D1922 /* LocationCoordinates.swift in Sources */,
 				259B9D962C555ED3003A716D /* Endpoint.swift in Sources */,
 				259B9DA52C5566F5003A716D /* NetworkManager.swift in Sources */,
 				259B9D9C2C5561A1003A716D /* Errors.swift in Sources */,

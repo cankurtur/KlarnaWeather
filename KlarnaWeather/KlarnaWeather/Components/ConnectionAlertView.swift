@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct AlertView: View {
+struct ConnectionAlertView: View {
     var warningTitle: String
     var warningDescription: String
     
@@ -39,5 +39,5 @@ struct AlertView: View {
 }
 
 #Preview {
-    AlertView(warningTitle: "MessageMessageMessageMessage", warningDescription: "DescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescription")
+    ConnectionAlertView(warningTitle: "MessageMessageMessageMessage", warningDescription: "DescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescription")
 }

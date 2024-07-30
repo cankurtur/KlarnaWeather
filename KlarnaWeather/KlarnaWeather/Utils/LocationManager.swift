@@ -10,9 +10,11 @@ import CoreLocation
 
 final class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
     private let locationManager = CLLocationManager()
+    private var isFirstLocationFetched: Bool = false
 
-    @Published var location: CLLocationCoordinate2D?
-    @Published var authorizationStatus: CLAuthorizationStatus = .notDetermined
+    @Published var currentLocation: CLLocationCoordinate2D?
+    @Published var firstLocation: CLLocationCoordinate2D?
+    @Published var hasPermission: Bool = false
     
     override init() {
         super.init()
@@ -21,17 +23,13 @@ final class LocationManager: NSObject, ObservableObject, CLLocationManagerDelega
         locationManager.startUpdatingLocation()
     }
     
-    func requestLocationIfNeeded() {
-        if authorizationStatus == .authorizedAlways || authorizationStatus == .authorizedWhenInUse {
-            locationManager.requestLocation()
-        } else {
-            // TODO: - Alert will added
-            print("-need location permission")
-        }
-    }
-    
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        location = locations.first?.coordinate
+        if !isFirstLocationFetched {
+            firstLocation = locations.first?.coordinate
+            isFirstLocationFetched = true
+        }
+        
+        currentLocation = locations.first?.coordinate
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: any Error) {
@@ -41,12 +39,14 @@ final class LocationManager: NSObject, ObservableObject, CLLocationManagerDelega
     
     func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
         let status = manager.authorizationStatus
-        self.authorizationStatus = status
         
         if status == .authorizedWhenInUse || status == .authorizedAlways {
-            self.locationManager.startUpdatingLocation()
+            hasPermission = true
+            locationManager.startUpdatingLocation()
         } else {
-            self.locationManager.stopUpdatingLocation()
+            hasPermission = false
+            locationManager.stopUpdatingLocation()
         }
     }
 }
+

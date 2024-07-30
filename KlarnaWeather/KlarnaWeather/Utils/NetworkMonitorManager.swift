@@ -12,7 +12,7 @@ import Network
 final class NetworkMonitorManager: ObservableObject {
     private let monitor: NWPathMonitor = NWPathMonitor()
     private let queue = DispatchQueue(label: "NetworkMonitor")
-    @Published var isReachable: Bool = true
+    @Published var isReachable: Bool = false
 
     init() {
         startMonitoring()
@@ -24,7 +24,7 @@ final class NetworkMonitorManager: ObservableObject {
             
             Task {
                 await MainActor.run {
-                    self.isReachable = true
+                    self.isReachable = monitorPath.status == .satisfied
                 }
             }
         }
