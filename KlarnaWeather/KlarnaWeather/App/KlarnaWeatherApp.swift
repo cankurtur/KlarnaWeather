@@ -9,6 +9,11 @@ import SwiftUI
 
 @main
 struct KlarnaWeatherApp: App {
+    
+    init() {
+        NetworkMonitorManager.shared.startMonitoring()
+    }
+    
     var body: some Scene {
         WindowGroup {
             MainView()

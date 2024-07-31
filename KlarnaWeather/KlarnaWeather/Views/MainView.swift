@@ -8,10 +8,7 @@
 import SwiftUI
 
 struct MainView: View {
-    @StateObject var appSettings = AppSettings()
-
     var body: some View {
         WeatherView()
-            .environmentObject(appSettings)
     }
 }

@@ -7,40 +7,61 @@
 
 import SwiftUI
 import Combine
+import CoreLocation
 
 final class WeatherViewModel: ObservableObject {
     @Published var weatherInfoModel: WeatherInfoModel
     @Published var selectedLocationCoordinates: LocationCoordinates?
     @Published var showLocationPermissionAlert: Bool = false
     @Published var showLocationButton: Bool = false
-    private let compositionRoot: CompositionRootInterface
-    private var hasNetworkConnection: Bool = false
+    @Published var authorizationStatus: CLAuthorizationStatus = .notDetermined
+    @Published var hasNetworkConnection: Bool = false
+    
+    private let locationManager: LocationManagerInterface
+    private let networkManager: NetworkManagerInterface
+    private let networkMonitorManager: NetworkMonitorManagerInterface
     private var cancellables = Set<AnyCancellable>()
     
-    init() {
-        self.compositionRoot = CompositionRoot.shared
+    init(
+        locationManager: LocationManagerInterface = LocationManager(),
+        networkManager: NetworkManagerInterface = NetworkManager(),
+        networkMonitorManager: NetworkMonitorManagerInterface = NetworkMonitorManager.shared
+    ) {
+        self.locationManager = locationManager
+        self.networkManager = networkManager
+        self.networkMonitorManager = networkMonitorManager
         self.weatherInfoModel = WeatherInfoModel.defaultValue
-        self.setupBindigs()
+        setupBindigs()
     }
     
-    // This method use for action.
+    /// Handles the event when the location button is tapped.
     func didTapLocationButton() {
-        guard compositionRoot.locationManager.hasPermission else {
+        switch authorizationStatus {
+        case .notDetermined:
+            // Request location permission if it has not been determined.
+            locationManager.requestLocationPermission()
+        case .restricted, .denied:
+            // Show an alert if location access is restricted or denied.
             showLocationPermissionAlert = true
-            return
+        default:
+            // Fetch weather information using the current location if permissions are granted.
+            guard let location = locationManager.getCurrentLocationIfAvailable() else { return }
+            
+            fetchWeatherInformation(
+                latitude: location.latitude,
+                longitude: location.longitude,
+                isSelectedLocation: false
+            )
         }
-                
-        let location = compositionRoot.locationManager.currentLocation
-        self.checkConnectionAndFetchInfoIfNeeded(
-            latitude: location?.latitude,
-            longitude: location?.longitude,
-            showLocationButton: false
-        )
     }
     
-    // This method use for setting current connection with given value.
-    func setConnectionStatus(with connection: Bool) {
-        hasNetworkConnection = connection
+    /// Called when the view appears to start location updates or request permission.
+    func viewOnAppear() {
+        if authorizationStatus == .authorizedAlways || authorizationStatus == .authorizedWhenInUse {
+            locationManager.startUpdatingLocation()
+        } else {
+            locationManager.requestLocationPermission()
+        }
     }
 }
 
@@ -48,30 +69,54 @@ final class WeatherViewModel: ObservableObject {
 
 private extension WeatherViewModel {
     func setupBindigs() {
-        // Selected Location Binding
+        // Observe changes in `selectedLocationCoordinates` and fetch weather information when updated.
         $selectedLocationCoordinates
             .sink { [weak self] location in
                 guard let self else { return }
-                guard self.hasNetworkConnection else { return }
                 
-                self.checkConnectionAndFetchInfoIfNeeded(
+                self.fetchWeatherInformation(
                     latitude: location?.latitude,
                     longitude: location?.longitude,
-                    showLocationButton: true
+                    isSelectedLocation: true
                 )
             }
             .store(in: &cancellables)
-        
-        // First Location Binding
-        compositionRoot.locationManager.$firstLocation
-            .sink { [weak self] location in
+
+        // Observe changes in location authorization status and start location updates if authorized.
+        locationManager.authorizationStatus
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] status in
                 guard let self else { return }
                 
-                self.checkConnectionAndFetchInfoIfNeeded(
-                    latitude: location?.latitude,
-                    longitude: location?.longitude,
-                    showLocationButton: false
-                )
+                self.authorizationStatus = status
+                if status == .authorizedWhenInUse || status == .authorizedAlways {
+                    self.locationManager.startUpdatingLocation()
+                }
+            }
+            .store(in: &cancellables)
+        
+        // Observe changes in both the first location and network reachability.
+        Publishers.CombineLatest(locationManager.firstLocation, networkMonitorManager.isReachable)
+            .sink { [weak self] firstLocation, isReachable in
+                guard let self else { return }
+                
+                if isReachable, let location = firstLocation {
+                    // Fetch weather information if the network is reachable and a location is available.
+                    self.fetchWeatherInformation(
+                        latitude: location.latitude,
+                        longitude: location.longitude,
+                        isSelectedLocation: false
+                    )
+                } else {
+                    // Get weather information from cache if the network is not reachable.
+                    Task {
+                        await MainActor.run {
+                            self.getInfoFromCacheIfNeeded()
+                        }
+                    }
+                }
+                // Update network connection status.
+                self.hasNetworkConnection = isReachable
             }
             .store(in: &cancellables)
     }
@@ -80,45 +125,46 @@ private extension WeatherViewModel {
 // MARK: - Helpers
 
 private extension WeatherViewModel {
-    // This method check network connection first, if is reachable then fetch weather information of location. If not, set cache value to information.
-    func checkConnectionAndFetchInfoIfNeeded(latitude: Double?, longitude: Double?, showLocationButton: Bool) {
-        guard self.hasNetworkConnection else {
-            return updateWeatherInfoModel(with: UserDefaultConfig.lastWeatherResponse)
-        }
+    /// Retrieves weather information from the cache if available.
+    func getInfoFromCacheIfNeeded() {
+        let lastResponse = UserDefaultConfig.lastWeatherResponse
+        self.updateWeatherInfoModel(with: lastResponse)
+        self.showLocationButton = true
+    }
+    
+    /// Fetches weather information for a given location.
+    func fetchWeatherInformation(latitude: Double?, longitude: Double?, isSelectedLocation: Bool) {
+        guard let latitude, let longitude else { return }
         
-        self.fetchWeatherInformation(latitude: latitude, longitude: longitude) {
-            Task {
+        Task {
+            do {
+                let response = try await networkManager.request(
+                    endpoint: WeatherEndpointItem.fetchWeatherInfo(
+                        latitude: latitude,
+                        longitude: longitude
+                    ),
+                    responseType: WeatherInfoResponseModel.self
+                )
+                
+                // Update cache with the latest response and timestamp.
+                UserDefaultConfig.lastWeatherResponse = response
+                UserDefaultConfig.lastInfoFetchTime = Date.currentTimeWithHours
+                
+                // Update UI on the main thread.
                 await MainActor.run {
-                    self.showLocationButton = showLocationButton
+                    updateWeatherInfoModel(with: response)
+                    showLocationButton = isSelectedLocation
+                }
+            } catch let error {
+                await MainActor.run {
+                    let lastResponse = UserDefaultConfig.lastWeatherResponse
+                    updateWeatherInfoModel(with: lastResponse)
                 }
             }
         }
     }
     
-    // This method use for fetching weather information of location.
-    func fetchWeatherInformation(latitude: Double?, longitude: Double?, completion: @escaping ()-> Void) {
-        guard let latitude, let longitude else { return }
-        
-        Task {
-            let response = try await compositionRoot.networkManager.request(
-                endpoint: WeatherEndpointItem.fetchWeatherInfo(
-                    latitude: latitude,
-                    longitude: longitude
-                ),
-                responseType: WeatherInfoResponseModel.self
-            )
-            UserDefaultConfig.lastWeatherResponse = response
-            
-            await MainActor.run {
-                updateWeatherInfoModel(with: response)
-            }
-            UserDefaultConfig.lastWeatherResponse = response
-            UserDefaultConfig.lastInfoFetchTime = Date.currentTimeWithHours
-            completion()
-        }
-    }
-    
-    // This method use for updating weather information.
+    /// Updates the weather info model with the provided response.
     func updateWeatherInfoModel(with response: WeatherInfoResponseModel?) {
         guard let response else { return }
         

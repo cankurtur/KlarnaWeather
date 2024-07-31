@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		252FAC532C59629D0053F4A2 /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 252FAC522C59629D0053F4A2 /* AppSettings.swift */; };
 		252FAC592C5986BE0053F4A2 /* RoundedImageTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 252FAC582C5986BE0053F4A2 /* RoundedImageTextView.swift */; };
 		252FAC5C2C598B450053F4A2 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 252FAC5A2C598B450053F4A2 /* Localizable.strings */; };
 		252FAC5E2C598CC40053F4A2 /* Localizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 252FAC5D2C598CC40053F4A2 /* Localizable.swift */; };
@@ -46,7 +45,6 @@
 		259B9DDE2C56AAE8003A716D /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 259B9DDD2C56AAE8003A716D /* SearchView.swift */; };
 		259B9DE02C56B686003A716D /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 259B9DDF2C56B686003A716D /* SearchViewModel.swift */; };
 		259B9DE22C56DB41003A716D /* WeatherViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 259B9DE12C56DB41003A716D /* WeatherViewModel.swift */; };
-		259B9DE72C56F230003A716D /* CompositionRoot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 259B9DE62C56F230003A716D /* CompositionRoot.swift */; };
 		259B9DEB2C57107D003A716D /* NetworkMonitorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 259B9DEA2C57107D003A716D /* NetworkMonitorManager.swift */; };
 		25BA3F662C581D50004D1922 /* ConnectionAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25BA3F652C581D50004D1922 /* ConnectionAlertView.swift */; };
 		25BA3F752C585C7D004D1922 /* UserDefaultConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25BA3F742C585C7D004D1922 /* UserDefaultConfig.swift */; };
@@ -57,7 +55,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		252FAC522C59629D0053F4A2 /* AppSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettings.swift; sourceTree = "<group>"; };
 		252FAC582C5986BE0053F4A2 /* RoundedImageTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedImageTextView.swift; sourceTree = "<group>"; };
 		252FAC5B2C598B450053F4A2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		252FAC5D2C598CC40053F4A2 /* Localizable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localizable.swift; sourceTree = "<group>"; };
@@ -98,7 +95,6 @@
 		259B9DDD2C56AAE8003A716D /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		259B9DDF2C56B686003A716D /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		259B9DE12C56DB41003A716D /* WeatherViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewModel.swift; sourceTree = "<group>"; };
-		259B9DE62C56F230003A716D /* CompositionRoot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompositionRoot.swift; sourceTree = "<group>"; };
 		259B9DEA2C57107D003A716D /* NetworkMonitorManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkMonitorManager.swift; sourceTree = "<group>"; };
 		25BA3F652C581D50004D1922 /* ConnectionAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionAlertView.swift; sourceTree = "<group>"; };
 		25BA3F742C585C7D004D1922 /* UserDefaultConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultConfig.swift; sourceTree = "<group>"; };
@@ -242,8 +238,6 @@
 			isa = PBXGroup;
 			children = (
 				259B9D7D2C555624003A716D /* KlarnaWeatherApp.swift */,
-				259B9DE62C56F230003A716D /* CompositionRoot.swift */,
-				252FAC522C59629D0053F4A2 /* AppSettings.swift */,
 				259B9DAC2C557D18003A716D /* Config.plist */,
 			);
 			path = App;
@@ -443,7 +437,6 @@
 				259B9DD22C568167003A716D /* GeographicalInfoModel.swift in Sources */,
 				259B9DE02C56B686003A716D /* SearchViewModel.swift in Sources */,
 				259B9DB02C557E23003A716D /* Config.swift in Sources */,
-				259B9DE72C56F230003A716D /* CompositionRoot.swift in Sources */,
 				259B9DA92C556D66003A716D /* BaseURL.swift in Sources */,
 				259B9DD02C568159003A716D /* WeatherInfoModel.swift in Sources */,
 				25BA3F772C585C99004D1922 /* UserDefaultProperty.swift in Sources */,
@@ -459,7 +452,6 @@
 				259B9DB82C558AF1003A716D /* Fonts.swift in Sources */,
 				259B9D9E2C5563A3003A716D /* RequestBuilder.swift in Sources */,
 				259B9DA72C556914003A716D /* URLResponseExtension.swift in Sources */,
-				252FAC532C59629D0053F4A2 /* AppSettings.swift in Sources */,
 				259B9DC82C55BA60003A716D /* WeatherEndpointItem.swift in Sources */,
 				252FAC5E2C598CC40053F4A2 /* Localizable.swift in Sources */,
 				259B9DB62C558A8A003A716D /* Colors.swift in Sources */,

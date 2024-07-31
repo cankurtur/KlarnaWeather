@@ -9,7 +9,7 @@ import Foundation
 
 // MARK: - NetworkManagerProtocol
 
-protocol NetworkManagerProtocol {
+protocol NetworkManagerInterface {
     func request<T: Decodable>(endpoint: some Endpoint, responseType: T.Type) async throws -> T
 }
 
@@ -17,7 +17,7 @@ protocol NetworkManagerProtocol {
 // MARK: - NetworkManager
 
 /// Network manager that provides request methods with async/await.
-final class NetworkManager: NetworkManagerProtocol {
+final class NetworkManager: NetworkManagerInterface {
     let session: URLSession
     
     /// Timeout interval per each request.
