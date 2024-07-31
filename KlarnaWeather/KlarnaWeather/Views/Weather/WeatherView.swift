@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct WeatherView: View {
-    @EnvironmentObject var appSettings: AppSettings
     @StateObject var viewModel = WeatherViewModel()
     @State var showSearch: Bool = false
     
@@ -35,7 +34,7 @@ struct WeatherView: View {
                 }
             }
             buttonsView
-            if !appSettings.hasNetworkConnection {
+            if !viewModel.hasNetworkConnection {
                 VStack {
                     ConnectionAlertView(
                         warningTitle: Localizable.weatherLostConnection,
@@ -48,9 +47,9 @@ struct WeatherView: View {
         }.overlay {
             LocationPermissionAlertView(showAlert: $viewModel.showLocationPermissionAlert)
         }
-        .onReceive(appSettings.$hasNetworkConnection, perform: { connection in
-            viewModel.setConnectionStatus(with: connection)
-        })
+        .onAppear {
+            viewModel.viewOnAppear()
+        }
     }
 }
 
@@ -95,6 +94,7 @@ private extension WeatherView {
                     AppImageButton(image: Images.location) {
                         viewModel.didTapLocationButton()
                     }
+                    .disabled(!viewModel.hasNetworkConnection)
                     Spacer()
                 }
             }

@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct SearchView: View {
-    @EnvironmentObject var appSettings: AppSettings
     @StateObject var viewModel = SearchViewModel()
     @Binding var selectedLocationCoordinates: LocationCoordinates?
     @State private var selection: GeographicalInfoModel?
@@ -17,7 +16,7 @@ struct SearchView: View {
     var body: some View {
         NavigationView {
             if viewModel.searchResults.isEmpty {
-                if appSettings.hasNetworkConnection {
+                if viewModel.hasNetworkConnection {
                     emptyView
                 } else {
                     connectionIssueView
@@ -29,9 +28,6 @@ struct SearchView: View {
         .searchable(text: $viewModel.searchText)
         .autocorrectionDisabled()
         .padding(.top)
-        .onReceive(appSettings.$hasNetworkConnection) { connection in
-            viewModel.setConnectionStatus(with: connection)
-        }
     }
 }
 
