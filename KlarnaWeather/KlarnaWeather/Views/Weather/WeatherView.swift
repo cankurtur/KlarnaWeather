@@ -65,8 +65,9 @@ private extension WeatherView {
     var cityTextView: some View {
         Text(viewModel.weatherInfoModel.cityWithCountry)
             .font(.primaryHeadline)
+            .multilineTextAlignment(.center)
             .foregroundStyle(Color.primaryText)
-            .padding()
+            .padding(.bottom, 50)
     }
     
     var statusView: some View {

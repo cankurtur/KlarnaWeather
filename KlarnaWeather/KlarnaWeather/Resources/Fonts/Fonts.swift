@@ -13,7 +13,7 @@ extension Font {
     }
     
     static var primaryHeadline: Font {
-        .system(size: 32, weight: .medium)
+        .system(size: 30, weight: .medium)
     }
     
     static var primaryTitle: Font {

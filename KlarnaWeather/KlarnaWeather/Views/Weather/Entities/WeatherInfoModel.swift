@@ -34,7 +34,7 @@ struct WeatherInfoModel {
         case clouds = "cloud.sun.fill"
         case noInfo = "exclamationmark.icloud.fill"
         
-        static func ImageName(with id: Int) -> IconName {
+        static func getImageName(with id: Int) -> IconName {
             switch id {
             case 200...232:
                 return .thunderstorm
