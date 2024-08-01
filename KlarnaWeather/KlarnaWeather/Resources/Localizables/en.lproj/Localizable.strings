@@ -17,7 +17,10 @@
 
 "weather.maxTemp" = "Max Temp";
 "weather.minTemp" = "Min Temp";
-"weather.withCelcius" = "%.1f °C";
+"weather.withCelsius" = "%.1f °C";
+"weather.withFahrenheit" = "%.1f °F";
+"weather.celsius" = "C";
+"weather.fahrenheit" = "F";
 
 // Search
 

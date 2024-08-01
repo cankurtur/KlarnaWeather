@@ -7,10 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2503DE1F2C5C241000899EF6 /* LocaleExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2503DE1E2C5C241000899EF6 /* LocaleExtension.swift */; };
 		252FAC592C5986BE0053F4A2 /* RoundedImageTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 252FAC582C5986BE0053F4A2 /* RoundedImageTextView.swift */; };
 		252FAC5C2C598B450053F4A2 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 252FAC5A2C598B450053F4A2 /* Localizable.strings */; };
 		252FAC5E2C598CC40053F4A2 /* Localizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 252FAC5D2C598CC40053F4A2 /* Localizable.swift */; };
 		252FAC602C598E950053F4A2 /* Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = 252FAC5F2C598E950053F4A2 /* Images.swift */; };
+		2541D2F62C5BC93500BEB22D /* TemperatureUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2541D2F52C5BC93500BEB22D /* TemperatureUnit.swift */; };
 		259B9D7E2C555624003A716D /* KlarnaWeatherApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 259B9D7D2C555624003A716D /* KlarnaWeatherApp.swift */; };
 		259B9D822C555625003A716D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 259B9D812C555625003A716D /* Assets.xcassets */; };
 		259B9D852C555625003A716D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 259B9D842C555625003A716D /* Preview Assets.xcassets */; };
@@ -76,10 +78,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2503DE1E2C5C241000899EF6 /* LocaleExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocaleExtension.swift; sourceTree = "<group>"; };
 		252FAC582C5986BE0053F4A2 /* RoundedImageTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedImageTextView.swift; sourceTree = "<group>"; };
 		252FAC5B2C598B450053F4A2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		252FAC5D2C598CC40053F4A2 /* Localizable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localizable.swift; sourceTree = "<group>"; };
 		252FAC5F2C598E950053F4A2 /* Images.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Images.swift; sourceTree = "<group>"; };
+		2541D2F52C5BC93500BEB22D /* TemperatureUnit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemperatureUnit.swift; sourceTree = "<group>"; };
 		259B9D7A2C555624003A716D /* KlarnaWeather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KlarnaWeather.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		259B9D7D2C555624003A716D /* KlarnaWeatherApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KlarnaWeatherApp.swift; sourceTree = "<group>"; };
 		259B9D812C555625003A716D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -190,6 +194,15 @@
 			path = Localizables;
 			sourceTree = "<group>";
 		};
+		2541D2FA2C5BC99100BEB22D /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				25BA3F7B2C59066B004D1922 /* LocationCoordinates.swift */,
+				2541D2F52C5BC93500BEB22D /* TemperatureUnit.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		259B9D712C555624003A716D = {
 			isa = PBXGroup;
 			children = (
@@ -216,6 +229,7 @@
 				259B9DB22C55899B003A716D /* Views */,
 				259B9DBB2C558E35003A716D /* Components */,
 				259B9DAE2C557E05003A716D /* Utils */,
+				2541D2FA2C5BC99100BEB22D /* Helpers */,
 				25BA3F782C590645004D1922 /* Extensions */,
 				259B9DAB2C557C81003A716D /* Resources */,
 				259B9DC62C55BA3F003A716D /* Rest */,
@@ -364,7 +378,6 @@
 			isa = PBXGroup;
 			children = (
 				259B9DCF2C568159003A716D /* WeatherInfoModel.swift */,
-				25BA3F7B2C59066B004D1922 /* LocationCoordinates.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -391,6 +404,7 @@
 			children = (
 				25BA3F792C590652004D1922 /* DateExtension.swift */,
 				25F628162C5B04E500D32D99 /* StringExtension.swift */,
+				2503DE1E2C5C241000899EF6 /* LocaleExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -563,6 +577,7 @@
 				259B9D922C555BE7003A716D /* HTTPMethod.swift in Sources */,
 				259B9DEB2C57107D003A716D /* NetworkMonitorManager.swift in Sources */,
 				25BA3F752C585C7D004D1922 /* UserDefaultConfig.swift in Sources */,
+				2503DE1F2C5C241000899EF6 /* LocaleExtension.swift in Sources */,
 				259B9DDE2C56AAE8003A716D /* SearchView.swift in Sources */,
 				252FAC592C5986BE0053F4A2 /* RoundedImageTextView.swift in Sources */,
 				252FAC602C598E950053F4A2 /* Images.swift in Sources */,
@@ -597,6 +612,7 @@
 				259B9DBD2C558E44003A716D /* AppLinearGradient.swift in Sources */,
 				25F628172C5B04E500D32D99 /* StringExtension.swift in Sources */,
 				259B9DA12C55647C003A716D /* URLQueryItemExtension.swift in Sources */,
+				2541D2F62C5BC93500BEB22D /* TemperatureUnit.swift in Sources */,
 				259B9DE22C56DB41003A716D /* WeatherViewModel.swift in Sources */,
 				259B9DDA2C569EC7003A716D /* AppImageButton.swift in Sources */,
 			);
@@ -786,11 +802,13 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = KlarnaWeather/Info.plist;
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "\"Your current location will be used to provide weather information.\"";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "\"Your current location will be used to provide weather information.\"";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -816,11 +834,13 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = KlarnaWeather/Info.plist;
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "\"Your current location will be used to provide weather information.\"";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "\"Your current location will be used to provide weather information.\"";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

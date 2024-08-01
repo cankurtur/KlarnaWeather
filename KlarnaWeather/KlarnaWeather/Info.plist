@@ -4,9 +4,12 @@
 <dict>
 	<key>Config</key>
 	<string>${CONFIGURATION}</string>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>&quot;Your current location will be used to provide weather information.&quot;</string>
-	<key>NSLocationAlwaysUsageDescription</key>
-	<string>&quot;Your current location will be used to provide weather information.&quot;</string>
+	<key>UILaunchScreen</key>
+	<dict>
+		<key>UIImageName</key>
+		<string>splash</string>
+		<key>UILaunchScreen</key>
+		<dict/>
+	</dict>
 </dict>
 </plist>

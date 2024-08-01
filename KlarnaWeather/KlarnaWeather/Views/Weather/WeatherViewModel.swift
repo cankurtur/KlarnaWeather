@@ -84,7 +84,7 @@ private extension WeatherViewModel {
                 )
             }
             .store(in: &cancellables)
-
+        
         // Observe changes in location authorization status and start location updates if authorized.
         locationManager.authorizationStatus
             .receive(on: DispatchQueue.main)
@@ -99,29 +99,38 @@ private extension WeatherViewModel {
             .store(in: &cancellables)
         
         // Observe changes in both the first location and network reachability.
-        Publishers.CombineLatest(locationManager.firstLocation, networkMonitorManager.isReachable)
-            .sink { [weak self] firstLocation, isReachable in
-                guard let self else { return }
-                
-                if isReachable, let location = firstLocation {
-                    // Fetch weather information if the network is reachable and a location is available.
-                    self.fetchWeatherInformation(
-                        latitude: location.latitude,
-                        longitude: location.longitude,
-                        isSelectedLocation: false
-                    )
-                } else {
-                    // Get weather information from cache if the network is not reachable.
-                    Task {
-                        await MainActor.run {
-                            self.getInfoFromCacheIfNeeded()
-                        }
+        Publishers.CombineLatest(
+            locationManager.firstLocation.removeDuplicates {
+                $0?.latitude == $1?.latitude && $0?.longitude == $1?.longitude
+            },
+            networkMonitorManager.isReachable
+        )
+        .sink { [weak self] firstLocation, isReachable in
+            guard let self else { return }
+            
+            // Update network connection status.
+            self.hasNetworkConnection = isReachable
+            
+            guard isReachable else {
+                // Get weather information from cache if the network is not reachable.
+                Task {
+                    await MainActor.run {
+                        self.getInfoFromCacheIfNeeded()
                     }
                 }
-                // Update network connection status.
-                self.hasNetworkConnection = isReachable
+                return
             }
-            .store(in: &cancellables)
+            
+            if let location = firstLocation {
+                // Fetch weather information if the network is reachable and a location is available.
+                self.fetchWeatherInformation(
+                    latitude: location.latitude,
+                    longitude: location.longitude,
+                    isSelectedLocation: false
+                )
+            }
+        }
+        .store(in: &cancellables)
     }
 }
 
@@ -171,9 +180,9 @@ private extension WeatherViewModel {
         guard let response else { return }
         
         let iconName = WeatherInfoModel.IconName.getImageName(with: response.weather?.first?.id ?? 0)
-        let temp = String(format: Localizable.weatherWithCelcius, response.main?.temp ?? "-")
-        let tempMin = String(format: Localizable.weatherWithCelcius, response.main?.tempMin ?? "-")
-        let tempMax = String(format: Localizable.weatherWithCelcius, response.main?.tempMax ?? "-")
+        let temp = String(format: UserDefaultConfig.currentTemperatureUnit.symbol, response.main?.temp ?? "-")
+        let tempMin = String(format: UserDefaultConfig.currentTemperatureUnit.symbol, response.main?.tempMin ?? "-")
+        let tempMax = String(format: UserDefaultConfig.currentTemperatureUnit.symbol, response.main?.tempMax ?? "-")
         
         var cityWithCountry = ""
         

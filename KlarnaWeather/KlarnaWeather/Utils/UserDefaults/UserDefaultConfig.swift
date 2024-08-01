@@ -10,6 +10,7 @@ import Foundation
 enum UserDefaultKeys: String {
     case lastWeatherResponse
     case lastInfoFetchTime
+    case currentTemperatureUnit
 }
 
 struct UserDefaultConfig {
@@ -18,4 +19,7 @@ struct UserDefaultConfig {
     
     @UserDefaultProperty(key: UserDefaultKeys.lastInfoFetchTime, defaultValue: "-:-")
     static var lastInfoFetchTime: String
+    
+    @UserDefaultProperty(key: UserDefaultKeys.currentTemperatureUnit, defaultValue: Locale.temperatureUnit)
+    static var currentTemperatureUnit: TemperatureUnit
 }

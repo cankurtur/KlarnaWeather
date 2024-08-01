@@ -10,8 +10,10 @@
 		<string>https://api.openweathermap.org</string>
 		<key>defaultSearchLimit</key>
 		<integer>10</integer>
-		<key>temperatureUnitKey</key>
+		<key>celsiusUnitKey</key>
 		<string>metric</string>
+		<key>fahrenheitUnitKey</key>
+		<string>imperial</string>
 	</dict>
 	<key>Release</key>
 	<dict>
@@ -21,8 +23,10 @@
 		<string>https://api.openweathermap.org</string>
 		<key>defaultSearchLimit</key>
 		<integer>10</integer>
-		<key>temperatureUnitKey</key>
+		<key>celsiusUnitKey</key>
 		<string>metric</string>
+		<key>fahrenheitUnitKey</key>
+		<string>imperial</string>
 	</dict>
 </dict>
 </plist>
