@@ -45,7 +45,7 @@ The design prioritizes simplicity and ease of use, ensuring that the core functi
 
 - All strings, fonts, images, and colors used within the app are consolidated under the resources directory. Extensions were created for fonts and colors to manage them efficiently, and all app-specific fonts and colors are maintained within these extensions. For images and strings, `Images` and `Localizable` structs were created, respectively. This organization prevents direct usage of strings and system image names within views.
 
-- KlarnaWeather supports multiple units for temperature. To optimize performance and reduce unnecessary API calls, temperature conversions are computed locally within the app rather than making repeated requests for the same information. This approach minimizes network traffic. Once the user selects a temperature unit via a toggle, the app updates subsequent API requests to use the most recently selected unit.
+- KlarnaWeather supports multiple temperature units and retrieves the user's location settings from the region settings to ensure accurate weather information.
 
 ## Notes:
 
