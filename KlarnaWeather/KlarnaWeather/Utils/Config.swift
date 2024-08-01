@@ -13,7 +13,8 @@ private enum Keys: String {
     case openWeatherMapAPIKey
     case openWeatherMapBaseUrl
     case defaultSearchLimit
-    case temperatureUnitKey
+    case celsiusUnitKey
+    case fahrenheitUnitKey
 }
 
 // MARK: - Config
@@ -45,7 +46,11 @@ extension Config {
         return configs.object(forKey: Keys.defaultSearchLimit.rawValue) as! Int
     }
     
-    var temperatureUnitKey: String {
-        return configs.object(forKey: Keys.temperatureUnitKey.rawValue) as! String
+    var celsiusUnitKey: String {
+        return configs.object(forKey: Keys.celsiusUnitKey.rawValue) as! String
+    }
+    
+    var fahrenheitUnitKey: String {
+        return configs.object(forKey: Keys.fahrenheitUnitKey.rawValue) as! String
     }
 }
