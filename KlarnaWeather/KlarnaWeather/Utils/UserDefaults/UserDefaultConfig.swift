@@ -11,7 +11,6 @@ enum UserDefaultKeys: String {
     case lastWeatherResponse
     case lastInfoFetchTime
     case currentTemperatureUnit
-    case latestTemperatureValues
 }
 
 struct UserDefaultConfig {

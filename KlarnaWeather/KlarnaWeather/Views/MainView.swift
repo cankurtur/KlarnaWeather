@@ -17,7 +17,6 @@ struct MainView: View {
             .onChange(of: scenePhase) { newPhase in
                 if newPhase == .active {
                     UserDefaultConfig.currentTemperatureUnit = Locale.temperatureUnit
-                    print(Locale.temperatureUnit)
                 }
             }
     }
