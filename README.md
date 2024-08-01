@@ -51,3 +51,4 @@ The design prioritizes simplicity and ease of use, ensuring that the core functi
 
 - The functions in the `SearchViewModel` are private, which is why unit tests have not been written for this view model.
 - The `isReachable` value in the `NetworkMonitorManager` may exhibit inconsistencies when tested on the simulator, as it directly relies on the macOS internet connection. For more accurate results, testing on a physical device is recommended. This link could be helpful: https://forums.developer.apple.com/forums/thread/713330
+- The application supports multiple temperature units; however, changes to temperature units may not be consistent when tested in the iOS Simulator. This functionality works as expected on a physical device.
