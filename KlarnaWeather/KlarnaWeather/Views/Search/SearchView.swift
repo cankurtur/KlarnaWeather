@@ -7,6 +7,8 @@
 
 import SwiftUI
 
+// MARK: - SearchView
+
 struct SearchView: View {
     @StateObject var viewModel = SearchViewModel()
     @Binding var selectedLocationCoordinates: LocationCoordinates?
@@ -27,7 +29,10 @@ struct SearchView: View {
         }
         .searchable(text: $viewModel.searchText)
         .autocorrectionDisabled()
-        .padding(.top)
+        .alert(Localizable.somethingWentWrong,
+               isPresented: $viewModel.showAlert) {
+            Button(Localizable.ok, role: .cancel) {}
+        }
     }
 }
 
@@ -37,7 +42,7 @@ private extension SearchView {
     var searchListView: some View {
         List(viewModel.searchResults, selection: $selection) { info in
             HStack {
-                Text(info.cityWithCountry)
+                Text(info.fullname)
                 Spacer()
             }
             .contentShape(Rectangle())

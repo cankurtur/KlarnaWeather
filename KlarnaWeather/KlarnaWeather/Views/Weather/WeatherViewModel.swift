@@ -9,6 +9,8 @@ import SwiftUI
 import Combine
 import CoreLocation
 
+// MARK: - WeatherViewModel
+
 final class WeatherViewModel: ObservableObject {
     @Published var weatherInfoModel: WeatherInfoModel
     @Published var selectedLocationCoordinates: LocationCoordinates?
@@ -16,6 +18,7 @@ final class WeatherViewModel: ObservableObject {
     @Published var showLocationButton: Bool = false
     @Published var authorizationStatus: CLAuthorizationStatus = .notDetermined
     @Published var hasNetworkConnection: Bool = false
+    @Published var showAlert: Bool = false
     
     private let locationManager: LocationManagerInterface
     private let networkManager: NetworkManagerInterface
@@ -155,10 +158,9 @@ private extension WeatherViewModel {
                     updateWeatherInfoModel(with: response)
                     showLocationButton = isSelectedLocation
                 }
-            } catch let error {
+            } catch {
                 await MainActor.run {
-                    let lastResponse = UserDefaultConfig.lastWeatherResponse
-                    updateWeatherInfoModel(with: lastResponse)
+                    showAlert = true
                 }
             }
         }

@@ -7,6 +7,8 @@
 
 import SwiftUI
 
+// MARK: - WeatherView
+
 struct WeatherView: View {
     @StateObject var viewModel = WeatherViewModel()
     @State var showSearch: Bool = false
@@ -49,6 +51,10 @@ struct WeatherView: View {
         }
         .onAppear {
             viewModel.viewOnAppear()
+        }
+        .alert(Localizable.somethingWentWrong,
+               isPresented: $viewModel.showAlert) {
+            Button(Localizable.ok, role: .cancel) {}
         }
     }
 }

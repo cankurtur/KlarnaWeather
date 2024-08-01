@@ -7,6 +7,8 @@
 
 import SwiftUI
 
+// MARK: - MainView
+
 struct MainView: View {
     var body: some View {
         WeatherView()
