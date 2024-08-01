@@ -7,12 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2503DE1F2C5C241000899EF6 /* LocaleExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2503DE1E2C5C241000899EF6 /* LocaleExtension.swift */; };
 		252FAC592C5986BE0053F4A2 /* RoundedImageTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 252FAC582C5986BE0053F4A2 /* RoundedImageTextView.swift */; };
 		252FAC5C2C598B450053F4A2 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 252FAC5A2C598B450053F4A2 /* Localizable.strings */; };
 		252FAC5E2C598CC40053F4A2 /* Localizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 252FAC5D2C598CC40053F4A2 /* Localizable.swift */; };
 		252FAC602C598E950053F4A2 /* Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = 252FAC5F2C598E950053F4A2 /* Images.swift */; };
-		2541D2F62C5BC93500BEB22D /* LatestTemperatureValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2541D2F52C5BC93500BEB22D /* LatestTemperatureValues.swift */; };
-		2541D2F82C5BC94A00BEB22D /* PlainToggleStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2541D2F72C5BC94A00BEB22D /* PlainToggleStyle.swift */; };
+		2541D2F62C5BC93500BEB22D /* TemperatureUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2541D2F52C5BC93500BEB22D /* TemperatureUnit.swift */; };
 		259B9D7E2C555624003A716D /* KlarnaWeatherApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 259B9D7D2C555624003A716D /* KlarnaWeatherApp.swift */; };
 		259B9D822C555625003A716D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 259B9D812C555625003A716D /* Assets.xcassets */; };
 		259B9D852C555625003A716D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 259B9D842C555625003A716D /* Preview Assets.xcassets */; };
@@ -78,12 +78,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2503DE1E2C5C241000899EF6 /* LocaleExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocaleExtension.swift; sourceTree = "<group>"; };
 		252FAC582C5986BE0053F4A2 /* RoundedImageTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedImageTextView.swift; sourceTree = "<group>"; };
 		252FAC5B2C598B450053F4A2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		252FAC5D2C598CC40053F4A2 /* Localizable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localizable.swift; sourceTree = "<group>"; };
 		252FAC5F2C598E950053F4A2 /* Images.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Images.swift; sourceTree = "<group>"; };
-		2541D2F52C5BC93500BEB22D /* LatestTemperatureValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LatestTemperatureValues.swift; sourceTree = "<group>"; };
-		2541D2F72C5BC94A00BEB22D /* PlainToggleStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlainToggleStyle.swift; sourceTree = "<group>"; };
+		2541D2F52C5BC93500BEB22D /* TemperatureUnit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemperatureUnit.swift; sourceTree = "<group>"; };
 		259B9D7A2C555624003A716D /* KlarnaWeather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KlarnaWeather.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		259B9D7D2C555624003A716D /* KlarnaWeatherApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KlarnaWeatherApp.swift; sourceTree = "<group>"; };
 		259B9D812C555625003A716D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -198,7 +198,7 @@
 			isa = PBXGroup;
 			children = (
 				25BA3F7B2C59066B004D1922 /* LocationCoordinates.swift */,
-				2541D2F52C5BC93500BEB22D /* LatestTemperatureValues.swift */,
+				2541D2F52C5BC93500BEB22D /* TemperatureUnit.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -340,7 +340,6 @@
 				25BA3F652C581D50004D1922 /* ConnectionAlertView.swift */,
 				25BA3F7D2C59124C004D1922 /* LocationPermissionAlert.swift */,
 				252FAC582C5986BE0053F4A2 /* RoundedImageTextView.swift */,
-				2541D2F72C5BC94A00BEB22D /* PlainToggleStyle.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -405,6 +404,7 @@
 			children = (
 				25BA3F792C590652004D1922 /* DateExtension.swift */,
 				25F628162C5B04E500D32D99 /* StringExtension.swift */,
+				2503DE1E2C5C241000899EF6 /* LocaleExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -577,6 +577,7 @@
 				259B9D922C555BE7003A716D /* HTTPMethod.swift in Sources */,
 				259B9DEB2C57107D003A716D /* NetworkMonitorManager.swift in Sources */,
 				25BA3F752C585C7D004D1922 /* UserDefaultConfig.swift in Sources */,
+				2503DE1F2C5C241000899EF6 /* LocaleExtension.swift in Sources */,
 				259B9DDE2C56AAE8003A716D /* SearchView.swift in Sources */,
 				252FAC592C5986BE0053F4A2 /* RoundedImageTextView.swift in Sources */,
 				252FAC602C598E950053F4A2 /* Images.swift in Sources */,
@@ -599,7 +600,6 @@
 				259B9DB82C558AF1003A716D /* Fonts.swift in Sources */,
 				259B9D9E2C5563A3003A716D /* RequestBuilder.swift in Sources */,
 				259B9DA72C556914003A716D /* URLResponseExtension.swift in Sources */,
-				2541D2F82C5BC94A00BEB22D /* PlainToggleStyle.swift in Sources */,
 				259B9DC82C55BA60003A716D /* WeatherEndpointItem.swift in Sources */,
 				252FAC5E2C598CC40053F4A2 /* Localizable.swift in Sources */,
 				259B9DB62C558A8A003A716D /* Colors.swift in Sources */,
@@ -612,7 +612,7 @@
 				259B9DBD2C558E44003A716D /* AppLinearGradient.swift in Sources */,
 				25F628172C5B04E500D32D99 /* StringExtension.swift in Sources */,
 				259B9DA12C55647C003A716D /* URLQueryItemExtension.swift in Sources */,
-				2541D2F62C5BC93500BEB22D /* LatestTemperatureValues.swift in Sources */,
+				2541D2F62C5BC93500BEB22D /* TemperatureUnit.swift in Sources */,
 				259B9DE22C56DB41003A716D /* WeatherViewModel.swift in Sources */,
 				259B9DDA2C569EC7003A716D /* AppImageButton.swift in Sources */,
 			);
@@ -807,6 +807,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -837,6 +838,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
