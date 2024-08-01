@@ -11,6 +11,8 @@
 		252FAC5C2C598B450053F4A2 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 252FAC5A2C598B450053F4A2 /* Localizable.strings */; };
 		252FAC5E2C598CC40053F4A2 /* Localizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 252FAC5D2C598CC40053F4A2 /* Localizable.swift */; };
 		252FAC602C598E950053F4A2 /* Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = 252FAC5F2C598E950053F4A2 /* Images.swift */; };
+		2541D2F62C5BC93500BEB22D /* LatestTemperatureValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2541D2F52C5BC93500BEB22D /* LatestTemperatureValues.swift */; };
+		2541D2F82C5BC94A00BEB22D /* PlainToggleStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2541D2F72C5BC94A00BEB22D /* PlainToggleStyle.swift */; };
 		259B9D7E2C555624003A716D /* KlarnaWeatherApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 259B9D7D2C555624003A716D /* KlarnaWeatherApp.swift */; };
 		259B9D822C555625003A716D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 259B9D812C555625003A716D /* Assets.xcassets */; };
 		259B9D852C555625003A716D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 259B9D842C555625003A716D /* Preview Assets.xcassets */; };
@@ -80,6 +82,8 @@
 		252FAC5B2C598B450053F4A2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		252FAC5D2C598CC40053F4A2 /* Localizable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localizable.swift; sourceTree = "<group>"; };
 		252FAC5F2C598E950053F4A2 /* Images.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Images.swift; sourceTree = "<group>"; };
+		2541D2F52C5BC93500BEB22D /* LatestTemperatureValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LatestTemperatureValues.swift; sourceTree = "<group>"; };
+		2541D2F72C5BC94A00BEB22D /* PlainToggleStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlainToggleStyle.swift; sourceTree = "<group>"; };
 		259B9D7A2C555624003A716D /* KlarnaWeather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KlarnaWeather.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		259B9D7D2C555624003A716D /* KlarnaWeatherApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KlarnaWeatherApp.swift; sourceTree = "<group>"; };
 		259B9D812C555625003A716D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -190,6 +194,15 @@
 			path = Localizables;
 			sourceTree = "<group>";
 		};
+		2541D2FA2C5BC99100BEB22D /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				25BA3F7B2C59066B004D1922 /* LocationCoordinates.swift */,
+				2541D2F52C5BC93500BEB22D /* LatestTemperatureValues.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		259B9D712C555624003A716D = {
 			isa = PBXGroup;
 			children = (
@@ -216,6 +229,7 @@
 				259B9DB22C55899B003A716D /* Views */,
 				259B9DBB2C558E35003A716D /* Components */,
 				259B9DAE2C557E05003A716D /* Utils */,
+				2541D2FA2C5BC99100BEB22D /* Helpers */,
 				25BA3F782C590645004D1922 /* Extensions */,
 				259B9DAB2C557C81003A716D /* Resources */,
 				259B9DC62C55BA3F003A716D /* Rest */,
@@ -326,6 +340,7 @@
 				25BA3F652C581D50004D1922 /* ConnectionAlertView.swift */,
 				25BA3F7D2C59124C004D1922 /* LocationPermissionAlert.swift */,
 				252FAC582C5986BE0053F4A2 /* RoundedImageTextView.swift */,
+				2541D2F72C5BC94A00BEB22D /* PlainToggleStyle.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -364,7 +379,6 @@
 			isa = PBXGroup;
 			children = (
 				259B9DCF2C568159003A716D /* WeatherInfoModel.swift */,
-				25BA3F7B2C59066B004D1922 /* LocationCoordinates.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -585,6 +599,7 @@
 				259B9DB82C558AF1003A716D /* Fonts.swift in Sources */,
 				259B9D9E2C5563A3003A716D /* RequestBuilder.swift in Sources */,
 				259B9DA72C556914003A716D /* URLResponseExtension.swift in Sources */,
+				2541D2F82C5BC94A00BEB22D /* PlainToggleStyle.swift in Sources */,
 				259B9DC82C55BA60003A716D /* WeatherEndpointItem.swift in Sources */,
 				252FAC5E2C598CC40053F4A2 /* Localizable.swift in Sources */,
 				259B9DB62C558A8A003A716D /* Colors.swift in Sources */,
@@ -597,6 +612,7 @@
 				259B9DBD2C558E44003A716D /* AppLinearGradient.swift in Sources */,
 				25F628172C5B04E500D32D99 /* StringExtension.swift in Sources */,
 				259B9DA12C55647C003A716D /* URLQueryItemExtension.swift in Sources */,
+				2541D2F62C5BC93500BEB22D /* LatestTemperatureValues.swift in Sources */,
 				259B9DE22C56DB41003A716D /* WeatherViewModel.swift in Sources */,
 				259B9DDA2C569EC7003A716D /* AppImageButton.swift in Sources */,
 			);
