@@ -10,6 +10,8 @@
 
 "general.cancel" = "Cancel";
 "general.settings" = "Settings";
+"general.somethingWentWrong" = "Something went wrong";
+"general.ok" = "OK";
 
 // Weather
 

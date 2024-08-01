@@ -12,6 +12,8 @@ struct Localizable {
     // MARK: - General
     static let cancel = NSLocalizedString("general.cancel", comment: "")
     static let settings = NSLocalizedString("general.settings", comment: "")
+    static let somethingWentWrong = NSLocalizedString("general.somethingWentWrong", comment: "")
+    static let ok = NSLocalizedString("general.ok", comment: "")
     
     // MARK: - Weather
     
