@@ -68,7 +68,9 @@ extension LocationManager: LocationManagerInterface {
 extension LocationManager: CLLocationManagerDelegate {
     /// Called when the authorization status for location services changes.
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
-        self.currentAuthorizationStatus = status
+        DispatchQueue.main.async { [weak self] in
+            self?.currentAuthorizationStatus = status
+        }
         
         if status == .authorizedWhenInUse || status == .authorizedAlways {
             locationManager.startUpdatingLocation()
@@ -79,12 +81,15 @@ extension LocationManager: CLLocationManagerDelegate {
     
     /// Called when new location data is available.
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        self.currentLocation = locations.first?.coordinate
-        
-        if firstValidLocation == nil {
-            firstValidLocation = currentLocation
+        DispatchQueue.main.async { [weak self] in
+            guard let self else { return }
+            
+            self.currentLocation = locations.last?.coordinate
+            
+            if firstValidLocation == nil {
+                firstValidLocation = currentLocation
+            }
         }
-        
     }
     
     /// Called when an error occurs while attempting to get location data.
