@@ -10,7 +10,7 @@ import Foundation
 struct GeographicalInfoModel: Identifiable, Hashable {
     var id = UUID()
     
-    let cityWithCountry: String
+    let fullname: String
     let latitude: Double
     let longitude: Double
 }

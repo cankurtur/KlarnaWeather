@@ -29,8 +29,9 @@ struct SearchView: View {
         }
         .searchable(text: $viewModel.searchText)
         .autocorrectionDisabled()
-        .alert("Something went wrong", isPresented: $viewModel.showAlert) {
-            Button("OK", role: .cancel) {}
+        .alert(Localizable.somethingWentWrong,
+               isPresented: $viewModel.showAlert) {
+            Button(Localizable.ok, role: .cancel) {}
         }
     }
 }

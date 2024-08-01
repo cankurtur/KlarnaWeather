@@ -8,10 +8,13 @@
 import SwiftUI
 import Combine
 
-class SearchViewModel: ObservableObject {
+// MARK: - SearchViewModel
+
+final class SearchViewModel: ObservableObject {
     @Published var searchText: String = ""
     @Published var searchResults: [GeographicalInfoModel] = []
     @Published var hasNetworkConnection: Bool = false
+    @Published var showAlert: Bool = false
     
     private let networkManager: NetworkManagerInterface
     private let networkMonitorManager: NetworkMonitorManagerInterface
@@ -41,7 +44,7 @@ private extension SearchViewModel {
                 // Check if there is an active network connection before proceeding.
                 guard self.hasNetworkConnection else { return }
                 
-                guard searchText.count >= 3 || !searchText.isEmpty else {
+                guard searchText.count >= 3  else {
                     searchResults.removeAll()
                     return
                 }
@@ -77,8 +80,10 @@ private extension SearchViewModel {
                 await MainActor.run {
                     updateSearchResult(with: response)
                 }
-            } catch let error {
-                print(error)
+            } catch {
+                await MainActor.run {
+                    showAlert = true
+                }
             }
         }
     }
@@ -87,7 +92,7 @@ private extension SearchViewModel {
     func updateSearchResult(with response: [GeographicalInfoResponseModel]) {
         self.searchResults = response.map({ geographicalInfoResponseModel in
             return GeographicalInfoModel(
-                cityWithCountry: "\(geographicalInfoResponseModel.name), \(geographicalInfoResponseModel.country)",
+                fullname: "\(geographicalInfoResponseModel.name), \(geographicalInfoResponseModel.state),  \(geographicalInfoResponseModel.country.countryName)",
                 latitude: geographicalInfoResponseModel.lat,
                 longitude: geographicalInfoResponseModel.lon
             )
