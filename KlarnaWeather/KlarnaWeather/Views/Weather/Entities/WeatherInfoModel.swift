@@ -11,9 +11,9 @@ import Foundation
 
 struct WeatherInfoModel {
     let iconName: IconName
-    let temp: String
-    let tempMin: String
-    let tempMax: String
+    var temp: String
+    var tempMin: String
+    var tempMax: String
     let cityWithCountry: String
     
     static let defaultValue = WeatherInfoModel(

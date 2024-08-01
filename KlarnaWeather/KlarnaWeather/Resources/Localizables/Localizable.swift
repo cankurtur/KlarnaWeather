@@ -19,7 +19,10 @@ struct Localizable {
     
     static let maxTemp = NSLocalizedString("weather.maxTemp", comment: "")
     static let minTemp = NSLocalizedString("weather.minTemp", comment: "")
-    static let weatherWithCelcius = NSLocalizedString("weather.withCelcius", comment: "")
+    static let weatherWithCelsius = NSLocalizedString("weather.withCelsius", comment: "")
+    static let weatherWithFahrenheit = NSLocalizedString("weather.withFahrenheit", comment: "")
+    static let celsius = NSLocalizedString("weather.celsius", comment: "")
+    static let fahrenheit = NSLocalizedString("weather.fahrenheit", comment: "")
     
     // MARK: - Search
     
