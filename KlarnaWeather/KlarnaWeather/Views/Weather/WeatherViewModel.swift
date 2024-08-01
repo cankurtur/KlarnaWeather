@@ -19,7 +19,6 @@ final class WeatherViewModel: ObservableObject {
     @Published var authorizationStatus: CLAuthorizationStatus = .notDetermined
     @Published var hasNetworkConnection: Bool = false
     @Published var showAlert: Bool = false
-    @Published var unitToggleIsOn: Bool
     
     private let locationManager: LocationManagerInterface
     private let networkManager: NetworkManagerInterface
@@ -35,7 +34,6 @@ final class WeatherViewModel: ObservableObject {
         self.networkManager = networkManager
         self.networkMonitorManager = networkMonitorManager
         self.weatherInfoModel = WeatherInfoModel.defaultValue
-        self.unitToggleIsOn = UserDefaultConfig.currentTemperatureUnit == .fahrenheit
         setupBindigs()
     }
     
@@ -124,15 +122,6 @@ private extension WeatherViewModel {
                 self.hasNetworkConnection = isReachable
             }
             .store(in: &cancellables)
-        
-        // Observe changes in unit toggle.
-        $unitToggleIsOn
-            .sink { [weak self] isOn in
-                guard let self else { return }
-                
-                self.handleToggleProcessesIfNeeded(with: isOn)
-            }
-            .store(in: &cancellables)
     }
 }
 
@@ -203,46 +192,5 @@ private extension WeatherViewModel {
             tempMax: tempMax,
             cityWithCountry: cityWithCountry
         )
-        
-        // Saves valeues from latest response to UserDefault.
-        if let temp = response.main?.temp,
-           let tempMin = response.main?.tempMin,
-           let tempMax = response.main?.tempMax {
-            
-            UserDefaultConfig.latestTemperatureValues = LatestTemperatureValues(
-                temp: temp,
-                tempMin: tempMin,
-                tempMax: tempMax
-            )
-        }
-    }
-    
-    func handleToggleProcessesIfNeeded(with isOn: Bool) {
-        if isOn == (UserDefaultConfig.currentTemperatureUnit == .fahrenheit) { return }
-        
-        let currentUnit = UserDefaultConfig.currentTemperatureUnit
-        
-        guard let latestTemperatureValue = UserDefaultConfig.latestTemperatureValues else { return }
-        
-        let convertedTempValue = currentUnit.convert(temp: latestTemperatureValue.temp)
-        let convertedTempMinValue = currentUnit.convert(temp: latestTemperatureValue.tempMin)
-        let convertedTempMaxValue = currentUnit.convert(temp: latestTemperatureValue.tempMax)
-        
-        UserDefaultConfig.currentTemperatureUnit = isOn ? .fahrenheit : .celsius
-        
-        let temp = String(format: UserDefaultConfig.currentTemperatureUnit.symbol, convertedTempValue)
-        let tempMin = String(format: UserDefaultConfig.currentTemperatureUnit.symbol, convertedTempMinValue)
-        let tempMax = String(format: UserDefaultConfig.currentTemperatureUnit.symbol, convertedTempMaxValue)
-        
-        self.weatherInfoModel.temp = temp
-        self.weatherInfoModel.tempMin = tempMin
-        self.weatherInfoModel.tempMax = tempMax
-        
-        let newTemperatureValues = LatestTemperatureValues(
-            temp: convertedTempValue,
-            tempMin: convertedTempMinValue,
-            tempMax: convertedTempMaxValue
-        )
-        UserDefaultConfig.latestTemperatureValues = newTemperatureValues
     }
 }

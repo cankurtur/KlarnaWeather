@@ -1,19 +1,11 @@
 //
-//  LatestTemperatureValues.swift
+//  TemperatureUnit.swift
 //  KlarnaWeather
 //
 //  Created by Can Kurtur on 1.08.2024.
 //
 
 import Foundation
-
-// MARK: - LatestTemperatureValues
-
-struct LatestTemperatureValues: Codable {
-    let temp: Double
-    let tempMin: Double
-    let tempMax: Double
-}
 
 // MARK: - TemperatureUnit
 
@@ -38,14 +30,18 @@ enum TemperatureUnit: Codable {
             Localizable.weatherWithFahrenheit
         }
     }
-    
-    /// Since there are only two types (Celsius and Fahrenheit), this method converts the temperature to the opposite unit of the one it is called on.
-    func convert(temp: Double) -> Double {
-        switch self {
-        case .celsius:
-            return temp * 9.0 / 5.0 + 32.0
-        case .fahrenheit:
-            return (temp - 32.0) * 5.0 / 9.0
+}
+
+extension Locale {
+    static var temperatureUnit: TemperatureUnit {
+        let formatter = MeasurementFormatter()
+        let temperature = Measurement(value: 0, unit: UnitTemperature.celsius)
+        let unit = formatter.string(from: temperature)
+       
+        if unit.contains(Localizable.celsius) {
+            return .celsius
+        } else {
+            return .fahrenheit
         }
     }
 }

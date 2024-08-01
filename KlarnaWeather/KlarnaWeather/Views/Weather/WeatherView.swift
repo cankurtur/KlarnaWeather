@@ -20,7 +20,6 @@ struct WeatherView: View {
             VStack {
                 cityTextView
                 statusView
-                unitToggleView
                 HStack(spacing: 50) {
                     RoundedImageTextView(
                         image: Images.thermometerHigh,
@@ -109,23 +108,6 @@ private extension WeatherView {
         }
         .padding(.all, 30)
         .padding(.top, 30)
-    }
-    
-    var unitToggleView: some View {
-        HStack {
-            Text(Localizable.celsius)
-                .font(.primarySmallTitle)
-                .padding(.trailing, 8)
-            
-            Toggle("", isOn: $viewModel.unitToggleIsOn)
-                .labelsHidden()
-                .toggleStyle(PlainToggleStyle())
-                .frame(width: 40)
-            
-            Text(Localizable.fahrenheit)
-                .font(.primarySmallTitle)
-                .padding(.leading, 8)
-        }
     }
 }
 
