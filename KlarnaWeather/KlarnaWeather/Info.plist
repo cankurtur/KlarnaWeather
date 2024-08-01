@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Config</key>
+	<string>${CONFIGURATION}</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>&quot;Your current location will be used to provide weather information.&quot;</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>&quot;Your current location will be used to provide weather information.&quot;</string>
+</dict>
+</plist>

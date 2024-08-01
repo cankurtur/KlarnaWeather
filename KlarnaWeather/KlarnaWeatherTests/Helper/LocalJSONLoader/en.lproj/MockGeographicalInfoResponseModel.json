@@ -1,0 +1,52 @@
+[
+{
+    "name": "Ianca",
+    "local_names": {
+        "hu": "Jankafalva",
+        "ro": "Ianca",
+        "uk": "Янка"
+    },
+    "lat": 47.2844479,
+    "lon": 21.9917392,
+    "country": "RO"
+},
+{
+    "name": "Anka",
+    "lat": 12.113814,
+    "lon": 5.9242728,
+    "country": "NG",
+    "state": "Zamfara State"
+},
+{
+    "name": "Ianca",
+    "local_names": {
+        "ro": "Ianca",
+        "ru": "Янка",
+        "uk": "Янка"
+    },
+    "lat": 45.1342582,
+    "lon": 27.470622,
+    "country": "RO"
+},
+{
+    "name": "Ianca",
+    "local_names": {
+        "uk": "Янка",
+        "ro": "Ianca"
+    },
+    "lat": 43.7832597,
+    "lon": 24.1766007,
+    "country": "RO"
+},
+{
+    "name": "Anka",
+    "local_names": {
+        "zh": "安卡",
+        "en": "Anka"
+    },
+    "lat": 24.288,
+    "lon": 104.966,
+    "country": "CN",
+    "state": "Yunnan"
+}
+]
