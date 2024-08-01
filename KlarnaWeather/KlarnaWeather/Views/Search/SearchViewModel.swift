@@ -90,12 +90,34 @@ private extension SearchViewModel {
     
     /// Updates the search results with the latest geographical information.
     func updateSearchResult(with response: [GeographicalInfoResponseModel]) {
-        self.searchResults = response.map({ geographicalInfoResponseModel in
+        
+        let filteredArray = response.filter { $0.lat != nil && $0.lon != nil }
+        
+        searchResults = filteredArray.map { geographicalInfoResponseModel in
+            
+            var fullName = ""
+            
+            // Append the  city name if available.
+            if let name = geographicalInfoResponseModel.name {
+                fullName += name
+            }
+            
+            // Append the state to the name if available.
+            if let state = geographicalInfoResponseModel.state {
+                fullName += ", \(state)"
+            }
+            
+            // Append the country to the name if available.
+            if let country = geographicalInfoResponseModel.country?.countryName {
+                fullName += ", \(country)"
+            }
+            
+            // Latitude and longitude default to 0 because models without valid coordinates have been filtered out.
             return GeographicalInfoModel(
-                fullname: "\(geographicalInfoResponseModel.name), \(geographicalInfoResponseModel.state),  \(geographicalInfoResponseModel.country.countryName)",
-                latitude: geographicalInfoResponseModel.lat,
-                longitude: geographicalInfoResponseModel.lon
+                fullname: fullName,
+                latitude: geographicalInfoResponseModel.lat ?? 0,
+                longitude: geographicalInfoResponseModel.lon ?? 0
             )
-        })
+        }
     }
 }

@@ -170,12 +170,27 @@ private extension WeatherViewModel {
     func updateWeatherInfoModel(with response: WeatherInfoResponseModel?) {
         guard let response else { return }
         
+        let iconName = WeatherInfoModel.IconName.getImageName(with: response.weather?.first?.id ?? 0)
+        let temp = String(format: Localizable.weatherWithCelcius, response.main?.temp ?? "-")
+        let tempMin = String(format: Localizable.weatherWithCelcius, response.main?.tempMin ?? "-")
+        let tempMax = String(format: Localizable.weatherWithCelcius, response.main?.tempMax ?? "-")
+        
+        var cityWithCountry = ""
+        
+        if let cityName = response.name {
+            cityWithCountry += cityName
+        }
+        
+        if let countryName = response.sys?.country?.countryName {
+            cityWithCountry += ",\n \(countryName)"
+        }
+        
         weatherInfoModel = WeatherInfoModel(
-            iconName: WeatherInfoModel.IconName.ImageName(with: response.weather.first?.id ?? 0),
-            temp: String(format: Localizable.weatherWithCelcius, response.main.temp),
-            tempMin: String(format: Localizable.weatherWithCelcius, response.main.tempMin),
-            tempMax: String(format: Localizable.weatherWithCelcius, response.main.tempMax),
-            cityWithCountry: "\(response.name), \(response.sys.country)"
+            iconName: iconName,
+            temp: temp,
+            tempMin: tempMin,
+            tempMax: tempMax,
+            cityWithCountry: cityWithCountry
         )
     }
 }

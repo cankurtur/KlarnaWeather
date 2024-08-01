@@ -16,6 +16,6 @@ struct UserDefaultConfig {
     @UserDefaultProperty(key: UserDefaultKeys.lastWeatherResponse, defaultValue: nil)
     static var lastWeatherResponse: WeatherInfoResponseModel?
     
-    @UserDefaultProperty(key: UserDefaultKeys.lastInfoFetchTime, defaultValue: "")
+    @UserDefaultProperty(key: UserDefaultKeys.lastInfoFetchTime, defaultValue: "-:-")
     static var lastInfoFetchTime: String
 }
